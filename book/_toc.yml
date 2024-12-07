@@ -1,0 +1,36 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Basic laws
+    chapters:
+    - file: config # to debug and to be removed
+  # - caption: Conservation laws
+  #   chapters:
+  #   - file: config # to debug and to be removed
+  # - caption: Boundary layers
+  #   chapters:
+  #   - file: config # to debug and to be removed
+  # - caption: Airfoil flows
+  #   chapters:
+  #   - file: config # to debug and to be removed
+  # - caption: Compressible flows
+  #   chapters:
+  #   - file: config # to debug and to be removed
+  # - caption: Supersonic flows
+  #   chapters:
+  #   - file: config # to debug and to be removed
+  # - caption: Internal flows
+  #   chapters:
+  #   - file: config # to debug and to be removed
+  # - caption: Flow stability
+  #   chapters:
+  #   - file: config # to debug and to be removed
+  # - caption: Unsteady flows
+  #   chapters:
+  #   - file: config # to debug and to be removed
+    # - file: basics/Spectral-Collocation-Methods
+    #   sections:
+    #   - file: basics/chebyshev-convergence
