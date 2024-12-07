@@ -4,12 +4,14 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Basic laws
-    chapters:
-    - file: config # to debug and to be removed
-  # - caption: Conservation laws
+  # - caption: Basic laws
   #   chapters:
   #   - file: config # to debug and to be removed
+  - caption: Conservation laws
+    chapters:
+    - file: conservation/massflow
+    - file: conservation/momentum
+    - file: conservation/energy
   # - caption: Boundary layers
   #   chapters:
   #   - file: config # to debug and to be removed
@@ -19,9 +21,11 @@ parts:
   # - caption: Compressible flows
   #   chapters:
   #   - file: config # to debug and to be removed
-  # - caption: Supersonic flows
-  #   chapters:
-  #   - file: config # to debug and to be removed
+  - caption: Supersonic flows
+    chapters:
+    - file: supersonic/shock-polar
+    - file: supersonic/planar-shocks
+    - file: supersonic/conical-shocks
   # - caption: Internal flows
   #   chapters:
   #   - file: config # to debug and to be removed
