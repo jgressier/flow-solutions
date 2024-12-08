@@ -7,8 +7,6 @@ _build/
 # git
 *.nogit
 
-config.ipynb
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyc
@@ -30,3 +28,6 @@ cover/
 .venv
 env/
 venv/
+
+# macos
+.DS_Store
