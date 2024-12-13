@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -62,11 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'conservation/massflow';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Forces by momentum flux balance" href="momentum.html" />
-    <link rel="prev" title="Theoretical solutions and simplified methods for incompressible and compressible flows" href="../intro.html" />
+    <link rel="prev" title="Methods for incompressible and compressible flows" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Theoretical solutions and simplified methods for incompressible and compressible flows
+                    Methods for incompressible and compressible flows
                 </a>
             </li>
         </ul>
@@ -176,7 +179,28 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supersonic flows</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../supersonic/shock-polar.html">Mass flow conservation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supersonic/shock-polar.html">Shock polar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supersonic/planar-shocks.html">Mass flow conservation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/shock-reflexion.html">2D shock reflections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../supersonic/conical-shocks.html">Conical shock waves</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supersonic/characteristics.html">Mach lines for 2d isentropic flows</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/moc-expansion.html">Isentropic expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/moc-smoothwall.html">supersonic flow over a bump</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Internal flows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../internal/nozzle-regimes.html">Flow regimes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../internal/nozzle-regime-details.html">Detailed flow regimes</a></li>
+
+
+
+
+</ul>
+</li>
 </ul>
 
     </div>
@@ -349,7 +373,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -365,6 +391,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variation-of-section">Variation of section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-solutions">Multiple solutions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -376,6 +411,81 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mass-flow-conservation">
 <h1>Mass flow conservation<a class="headerlink" href="#mass-flow-conservation" title="Permalink to this heading">#</a></h1>
+<p>Mass flow conservation is a key principle for steady flows. Though it is defined as an integral sum, it is widely used with averaged values. The surface is supposed to be normal the velocity. In this context,
+<span class="math notranslate nohighlight">\(\dot{m}=\rho V S\)</span> can be expanded as</p>
+<div class="math notranslate nohighlight">
+\[ 
+\dot{m}=\rho S V  = \frac{S P_t}{\sqrt{rT_t}} \dot{m_R}(M)
+\]</div>
+<p>where the weighted mass flow function</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{m_R}(M) = \sqrt\gamma M \left( 1+\frac{\gamma-1}{2}M^2 \right)^{-\frac{\gamma+1}{2(\gamma-1)}} 
+\]</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">gam</span> <span class="o">=</span> <span class="mf">1.4</span>
+
+<span class="k">def</span> <span class="nf">machplot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">mach</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">mach</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Mach&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mach</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">gam</span><span class="p">)</span> <span class="o">*</span> <span class="n">mach</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">mach</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">sigma</span><span class="p">(</span><span class="n">mach</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">mach</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.05</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># above defined plot</span>
+<span class="n">machplot</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="s2">&quot;$\dot</span><span class="si">{m_R}</span><span class="s2">(M)$&quot;</span><span class="p">,</span> <span class="n">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">))</span>
+<span class="n">machplot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="s2">&quot;$\Sigma(M)$&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="p">(</span><span class="n">mach</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/84f5b221e7d11c2e54c80339315d2c0a581295a8eff8fcfddddf9db0361cbcbe.png" src="../_images/84f5b221e7d11c2e54c80339315d2c0a581295a8eff8fcfddddf9db0361cbcbe.png" />
+</div>
+</div>
+<section id="variation-of-section">
+<h2>Variation of section<a class="headerlink" href="#variation-of-section" title="Permalink to this heading">#</a></h2>
+<p>test substitution of key {key} value</p>
+<div class="admonition-here-s-your-admonition admonition">
+<p class="admonition-title">Here’s your admonition</p>
+<p>Here’s the admonition content</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">This admonition was styled…</p>
+<p>With a tip class!</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">This admonition was styled…</p>
+<p>With a tip class!</p>
+</div>
+</section>
+<section id="multiple-solutions">
+<h2>Multiple solutions<a class="headerlink" href="#multiple-solutions" title="Permalink to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -414,7 +524,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Theoretical solutions and simplified methods for incompressible and compressible flows</p>
+        <p class="prev-next-title">Methods for incompressible and compressible flows</p>
       </div>
     </a>
     <a class="right-next"
@@ -432,6 +542,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variation-of-section">Variation of section</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-solutions">Multiple solutions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

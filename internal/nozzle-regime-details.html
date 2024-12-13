@@ -1,0 +1,825 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Detailed flow regimes &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'internal/nozzle-regime-details';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Flow regimes" href="nozzle-regimes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Methods for incompressible and compressible flows
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Conservation laws</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conservation/massflow.html">Mass flow conservation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conservation/momentum.html">Forces by momentum flux balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conservation/energy.html">Energy conservation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supersonic flows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supersonic/shock-polar.html">Shock polar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supersonic/planar-shocks.html">Mass flow conservation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/shock-reflexion.html">2D shock reflections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../supersonic/conical-shocks.html">Conical shock waves</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supersonic/characteristics.html">Mach lines for 2d isentropic flows</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/moc-expansion.html">Isentropic expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/moc-smoothwall.html">supersonic flow over a bump</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Internal flows</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="nozzle-regimes.html">Flow regimes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Detailed flow regimes</a></li>
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jgressier/flow-solutions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jgressier/flow-solutions/issues/new?title=Issue%20on%20page%20%2Finternal/nozzle-regime-details.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/internal/nozzle-regime-details.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Detailed flow regimes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detailed flow regimes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-limits-of-flow-regimes">Computation of limits of flow regimes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-flow">Isentropic subsonic flow</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-and-choked-flow">Isentropic subsonic and choked flow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-supersonic-flow">Isentropic supersonic flow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#supersonic-nozzle-with-normal-shock-at-exit">Supersonic nozzle with normal shock at exit</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#supersonic-nozzle-with-normal-shock-in-diffuser">Supersonic nozzle with normal shock in diffuser</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell tag_&quot;tags&quot;:_[&quot;remove-input&quot;] docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">aerokit.common.defaultgas</span> <span class="k">as</span> <span class="nn">defg</span>
+<span class="kn">import</span> <span class="nn">aerokit.aero.Isentropic</span> <span class="k">as</span> <span class="nn">Is</span>
+<span class="kn">import</span> <span class="nn">aerokit.aero.ShockWave</span>  <span class="k">as</span> <span class="nn">sw</span>
+<span class="kn">import</span> <span class="nn">aerokit.aero.MassFlow</span>   <span class="k">as</span> <span class="nn">mf</span>
+<span class="c1">#import aerokit.aero.nozzle     as nz</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="c1">#print plt.rcParams.keys()</span>
+<span class="c1"># for slides</span>
+<span class="c1">#plt.rcParams[&#39;font.size&#39;] = 24 ; plt.rcParams[&#39;grid.linewidth&#39;] = 2 ; plt.rcParams[&#39;lines.linewidth&#39;] = 4</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">new_plot</span><span class="p">(</span><span class="n">xlab</span><span class="p">,</span> <span class="n">ylab</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlab</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylab</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="detailed-flow-regimes">
+<h1>Detailed flow regimes<a class="headerlink" href="#detailed-flow-regimes" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_AoAc</span> <span class="o">=</span> <span class="mf">6.</span>
+<span class="n">length</span>      <span class="o">=</span> <span class="mf">8.</span>
+<span class="c1">#</span>
+<span class="c1"># set an A/Ac law from a Mach evolution, ensure exit Mach number is consistent with As/Ac</span>
+<span class="n">Noz_x</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ma_max</span>   <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">Mach_Sigma</span><span class="p">(</span><span class="n">target_AoAc</span><span class="p">,</span> <span class="n">Mach</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+<span class="n">ma</span>       <span class="o">=</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span><span class="n">ma_max</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">Noz_x</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mf">1.</span><span class="p">))</span>
+<span class="n">Noz_AoAc</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">Sigma_Mach</span><span class="p">(</span><span class="n">ma</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1">#new_plot(&#39;$x$&#39;, &#39;Mach, $r=\sqrt{A/A_c}$&#39;) ; plt.plot(Noz_x, ma, Noz_x, np.sqrt(Noz_AoAc))</span>
+<span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="s1">&#39;$r=\sqrt{A/A_c}$&#39;</span><span class="p">)</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Noz_x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="p">))</span>
+<span class="c1">#</span>
+<span class="n">coord_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Noz_x</span><span class="p">,</span> <span class="p">[</span><span class="n">length</span><span class="p">,</span> <span class="mf">1.05</span><span class="o">*</span><span class="n">length</span><span class="p">])</span>  <span class="c1"># define x coordinate with 2 additional points</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e229192966b190f2f79b40d252af709100c563aae2cfbc5b0dbde19e9a2e1e5a.png" src="../_images/e229192966b190f2f79b40d252af709100c563aae2cfbc5b0dbde19e9a2e1e5a.png" />
+</div>
+</div>
+<section id="computation-of-limits-of-flow-regimes">
+<h2>Computation of limits of flow regimes<a class="headerlink" href="#computation-of-limits-of-flow-regimes" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choked NPR but subsonic</span>
+<span class="n">Msub</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">MachSub_Sigma</span><span class="p">(</span><span class="n">target_AoAc</span><span class="p">)</span>
+<span class="n">NPR0</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Msub</span><span class="p">)</span>
+<span class="c1"># choked and supersonic</span>
+<span class="n">Msup</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">MachSup_Sigma</span><span class="p">(</span><span class="n">target_AoAc</span><span class="p">)</span>
+<span class="n">NPR1</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
+<span class="c1"># choked, supersonic and shock at exit</span>
+<span class="n">Msh</span>   <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">downstream_Mn</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
+<span class="n">NPRsw</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Msh</span><span class="p">)</span> <span class="o">/</span> <span class="n">sw</span><span class="o">.</span><span class="n">Pi_ratio</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NPR limits are &quot;</span><span class="p">,</span> <span class="n">NPR0</span><span class="p">,</span> <span class="n">NPRsw</span><span class="p">,</span> <span class="n">NPR1</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">with respective Mach &quot;</span><span class="p">,</span> <span class="n">Msub</span><span class="p">,</span> <span class="n">Msh</span><span class="p">,</span> <span class="n">Msup</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NPR limits are  1.006601275229614 4.831391753467699 63.12853673524992 
+with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="isentropic-subsonic-flow">
+<h1>Isentropic subsonic flow<a class="headerlink" href="#isentropic-subsonic-flow" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ma_col</span> <span class="o">=</span> <span class="mf">.7</span>
+<span class="c1">#</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">MachSub_Sigma</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="o">*</span><span class="n">mf</span><span class="o">.</span><span class="n">Sigma_Mach</span><span class="p">(</span><span class="n">Ma_col</span><span class="p">))</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_M</span><span class="p">,</span> <span class="p">[</span><span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># add constant points</span>
+<span class="n">_Pt</span> <span class="o">=</span> <span class="mf">0.</span><span class="o">*</span><span class="n">coord_x</span> <span class="o">+</span> <span class="mf">1.</span>
+<span class="n">_Ps</span> <span class="o">=</span> <span class="n">_Pt</span><span class="o">/</span><span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">_M</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;Mach&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe97cf57580&gt;]
+</pre></div>
+</div>
+<img alt="../_images/506c438253b1a0f340a5370bff1d3200cddcfb0d92db87c0578d408ea9a33a53.png" src="../_images/506c438253b1a0f340a5370bff1d3200cddcfb0d92db87c0578d408ea9a33a53.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;$P_s$, $P_t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_Pt</span><span class="p">,</span> <span class="n">coord_x</span><span class="p">,</span> <span class="n">_Ps</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.05)
+</pre></div>
+</div>
+<img alt="../_images/12829b98d8d9079afaa61aeb80cdf2ac472c0aed34d9be13c56f31e0a1b62474.png" src="../_images/12829b98d8d9079afaa61aeb80cdf2ac472c0aed34d9be13c56f31e0a1b62474.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="isentropic-subsonic-and-choked-flow">
+<h1>Isentropic subsonic and choked flow<a class="headerlink" href="#isentropic-subsonic-and-choked-flow" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_M</span>  <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">MachSub_Sigma</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="p">)</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_M</span><span class="p">,</span> <span class="p">[</span><span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># add constant points</span>
+<span class="n">_Pt</span> <span class="o">=</span> <span class="mf">0.</span><span class="o">*</span><span class="n">coord_x</span> <span class="o">+</span> <span class="mf">1.</span>
+<span class="n">_Ps</span> <span class="o">=</span> <span class="n">_Pt</span><span class="o">/</span><span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">_M</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;Mach&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe9880d6760&gt;]
+</pre></div>
+</div>
+<img alt="../_images/d519be4972b89c193283d0efb74daee32c17bdcd606e346aa54c1ccb747b2cf4.png" src="../_images/d519be4972b89c193283d0efb74daee32c17bdcd606e346aa54c1ccb747b2cf4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;$P_s$, $P_t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_Pt</span><span class="p">,</span> <span class="n">coord_x</span><span class="p">,</span> <span class="n">_Ps</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.05)
+</pre></div>
+</div>
+<img alt="../_images/8bd3a595ff9b31931286033839942410243cca125d90a4f365cc444d3d8c2f49.png" src="../_images/8bd3a595ff9b31931286033839942410243cca125d90a4f365cc444d3d8c2f49.png" />
+</div>
+</div>
+<section id="isentropic-supersonic-flow">
+<h2>Isentropic supersonic flow<a class="headerlink" href="#isentropic-supersonic-flow" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_Minit</span> <span class="o">=</span> <span class="mf">.05</span> <span class="o">+</span> <span class="p">(</span><span class="n">Noz_x</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span>   <span class="c1"># set initial guess to .05 in convergent, 2. in diffuser</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">Mach_Sigma</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="p">,</span> <span class="n">Mach</span><span class="o">=</span><span class="n">_Minit</span><span class="p">)</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_M</span><span class="p">,</span> <span class="p">[</span><span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># add constant points</span>
+<span class="n">_Pt</span> <span class="o">=</span> <span class="mf">0.</span><span class="o">*</span><span class="n">coord_x</span> <span class="o">+</span> <span class="mf">1.</span>
+<span class="n">_Ps</span> <span class="o">=</span> <span class="n">_Pt</span><span class="o">/</span><span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">_M</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;Mach&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe97ceb5370&gt;]
+</pre></div>
+</div>
+<img alt="../_images/bc2cab16731324f02678eae92141ee10780e0d406d3980b137eb7c781498f746.png" src="../_images/bc2cab16731324f02678eae92141ee10780e0d406d3980b137eb7c781498f746.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;$P_s$, $P_t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_Pt</span><span class="p">,</span> <span class="n">coord_x</span><span class="p">,</span> <span class="n">_Ps</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.05)
+</pre></div>
+</div>
+<img alt="../_images/3b3aa61bb77d0bd6df3cb354d8d576fd8cd402e93990017b38a2bb1600dc6cce.png" src="../_images/3b3aa61bb77d0bd6df3cb354d8d576fd8cd402e93990017b38a2bb1600dc6cce.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="supersonic-nozzle-with-normal-shock-at-exit">
+<h1>Supersonic nozzle with normal shock at exit<a class="headerlink" href="#supersonic-nozzle-with-normal-shock-at-exit" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is the same computation as previous cell but it is repeated to make it self consistent</span>
+<span class="n">_Minit</span> <span class="o">=</span> <span class="mf">.05</span> <span class="o">+</span> <span class="p">(</span><span class="n">Noz_x</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span>   <span class="c1"># set initial guess to .05 in convergent, 2. in diffuser</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">Mach_Sigma</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="p">,</span> <span class="n">Mach</span><span class="o">=</span><span class="n">_Minit</span><span class="p">)</span>
+<span class="n">Msh</span>    <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">downstream_Mn</span><span class="p">(</span><span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">Ptloss</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">Pi_ratio</span><span class="p">(</span><span class="n">_M</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_M</span><span class="p">,</span> <span class="p">[</span><span class="n">Msh</span><span class="p">,</span> <span class="n">Msh</span><span class="p">])</span>  <span class="c1"># add constant points</span>
+<span class="n">_Pt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.</span><span class="o">*</span><span class="n">Noz_x</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="p">[</span><span class="n">Ptloss</span><span class="p">,</span> <span class="n">Ptloss</span><span class="p">]);</span>
+<span class="n">_Ps</span> <span class="o">=</span> <span class="n">_Pt</span><span class="o">/</span><span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">_M</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;Mach&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe971d09850&gt;]
+</pre></div>
+</div>
+<img alt="../_images/c507237d3326f2cfe93adc694b05589916138cb02dd3dbe20af4d62f01c2454c.png" src="../_images/c507237d3326f2cfe93adc694b05589916138cb02dd3dbe20af4d62f01c2454c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;$P_s$, $P_t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_Pt</span><span class="p">,</span> <span class="n">coord_x</span><span class="p">,</span> <span class="n">_Ps</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.05)
+</pre></div>
+</div>
+<img alt="../_images/fde8276834dda9aecbddb25f94c8eb468aa74d7d52688129ad67f74818fe19eb.png" src="../_images/fde8276834dda9aecbddb25f94c8eb468aa74d7d52688129ad67f74818fe19eb.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="supersonic-nozzle-with-normal-shock-in-diffuser">
+<h1>Supersonic nozzle with normal shock in diffuser<a class="headerlink" href="#supersonic-nozzle-with-normal-shock-in-diffuser" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="mf">.5</span>                            <span class="c1"># 0 to 1 parameter to control shock position</span>
+<span class="n">NPR</span> <span class="o">=</span> <span class="n">NPR0</span><span class="o">*</span><span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">pos</span><span class="p">)</span><span class="o">+</span><span class="n">NPRsw</span><span class="o">*</span><span class="n">pos</span>
+<span class="c1">#</span>
+<span class="c1"># this is the same computation as previous cell but it is repeated to make it self consistent</span>
+<span class="n">_Minit</span> <span class="o">=</span> <span class="mf">.05</span> <span class="o">+</span> <span class="p">(</span><span class="n">Noz_x</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span>   <span class="c1"># set initial guess to .05 in convergent, 2. in diffuser</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">Mach_Sigma</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="p">,</span> <span class="n">Mach</span><span class="o">=</span><span class="n">_Minit</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># analytical solution for Ms</span>
+<span class="n">K</span>      <span class="o">=</span> <span class="n">NPR</span><span class="o">/</span><span class="n">target_AoAc</span><span class="o">/</span><span class="p">((</span><span class="n">defg</span><span class="o">.</span><span class="n">_gamma</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">((</span><span class="n">defg</span><span class="o">.</span><span class="n">_gamma</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">defg</span><span class="o">.</span><span class="n">_gamma</span><span class="o">-</span><span class="mf">1.</span><span class="p">))</span>
+<span class="n">Ms</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="mf">2.</span><span class="o">*</span><span class="p">(</span><span class="n">defg</span><span class="o">.</span><span class="n">_gamma</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="n">K</span><span class="p">)</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">defg</span><span class="o">.</span><span class="n">_gamma</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1">#</span>
+<span class="c1"># computation of shock wave (losses and upsptream Mach number)</span>
+<span class="n">Ptloss</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Ms</span><span class="p">)</span><span class="o">/</span><span class="n">NPR</span>
+<span class="n">Msh</span>    <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">Mn_Pi_ratio</span><span class="p">(</span><span class="n">Ptloss</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># redefine curves starting from &#39;ish&#39; index (closest value of Msh in supersonic flow)</span>
+<span class="n">ish</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">_M</span><span class="o">-</span><span class="n">Msh</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+<span class="n">_M</span><span class="p">[</span><span class="n">ish</span><span class="p">:]</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">MachSub_Sigma</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="p">[</span><span class="n">ish</span><span class="p">:]</span><span class="o">*</span><span class="n">mf</span><span class="o">.</span><span class="n">Sigma_Mach</span><span class="p">(</span><span class="n">Ms</span><span class="p">)</span><span class="o">/</span><span class="n">target_AoAc</span><span class="p">)</span>
+<span class="n">_M</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_M</span><span class="p">,</span> <span class="p">[</span><span class="n">Ms</span><span class="p">,</span> <span class="n">Ms</span><span class="p">])</span>  <span class="c1"># add constant points</span>
+<span class="n">_Pt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.</span><span class="o">*</span><span class="n">Noz_x</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">,</span> <span class="p">[</span><span class="n">Ptloss</span><span class="p">,</span> <span class="n">Ptloss</span><span class="p">]);</span>
+<span class="n">_Pt</span><span class="p">[</span><span class="n">ish</span><span class="p">:]</span> <span class="o">=</span> <span class="n">Ptloss</span>
+<span class="n">_Ps</span> <span class="o">=</span> <span class="n">_Pt</span><span class="o">/</span><span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">_M</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;Mach&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe9719dee80&gt;]
+</pre></div>
+</div>
+<img alt="../_images/c6724bdf319e893b81c8c70b64ab92175a70e70b929e8cb5797236843421d985.png" src="../_images/c6724bdf319e893b81c8c70b64ab92175a70e70b929e8cb5797236843421d985.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span><span class="s1">&#39;$P_s$, $P_t$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">coord_x</span><span class="p">,</span> <span class="n">_Pt</span><span class="p">,</span> <span class="n">coord_x</span><span class="p">,</span> <span class="n">_Ps</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.05)
+</pre></div>
+</div>
+<img alt="../_images/543e97142218273fadfdcdb50ebe16035a0585439d1b4d98fbe17304c4b01119.png" src="../_images/543e97142218273fadfdcdb50ebe16035a0585439d1b4d98fbe17304c4b01119.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./internal"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="nozzle-regimes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Flow regimes</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detailed flow regimes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-limits-of-flow-regimes">Computation of limits of flow regimes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-flow">Isentropic subsonic flow</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-and-choked-flow">Isentropic subsonic and choked flow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-supersonic-flow">Isentropic supersonic flow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#supersonic-nozzle-with-normal-shock-at-exit">Supersonic nozzle with normal shock at exit</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#supersonic-nozzle-with-normal-shock-in-diffuser">Supersonic nozzle with normal shock in diffuser</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

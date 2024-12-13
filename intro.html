@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Theoretical solutions and simplified methods for incompressible and compressible flows &#8212; My sample book</title>
+    <title>Methods for incompressible and compressible flows &#8212; My sample book</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -163,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Theoretical solutions and simplified methods for incompressible and compressible flows
+                    Methods for incompressible and compressible flows
                 </a>
             </li>
         </ul>
@@ -175,7 +176,28 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supersonic flows</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="supersonic/shock-polar.html">Mass flow conservation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supersonic/shock-polar.html">Shock polar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="supersonic/planar-shocks.html">Mass flow conservation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="supersonic/shock-reflexion.html">2D shock reflections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="supersonic/conical-shocks.html">Conical shock waves</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="supersonic/characteristics.html">Mach lines for 2d isentropic flows</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="supersonic/moc-expansion.html">Isentropic expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supersonic/moc-smoothwall.html">supersonic flow over a bump</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Internal flows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="internal/nozzle-regimes.html">Flow regimes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="internal/nozzle-regime-details.html">Detailed flow regimes</a></li>
+
+
+
+
+</ul>
+</li>
 </ul>
 
     </div>
@@ -359,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Theoretical solutions and simplified methods for incompressible and compressible flows</h1>
+    <h1>Methods for incompressible and compressible flows</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -373,12 +395,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="theoretical-solutions-and-simplified-methods-for-incompressible-and-compressible-flows">
-<h1>Theoretical solutions and simplified methods for incompressible and compressible flows<a class="headerlink" href="#theoretical-solutions-and-simplified-methods-for-incompressible-and-compressible-flows" title="Permalink to this heading">#</a></h1>
-<p>This Jupyter Book serves as a comprehensive collection of computational methods and illustrative examples for analyzing fluid flows in a variety of scenarios, including both incompressible and compressible regimes.
-Designed for researchers, students, and professionals in fluid dynamics, this resource focuses on practical implementation and computational techniques rather than an exhaustive exploration of the theoretical foundations.
+  <section class="tex2jax_ignore mathjax_ignore" id="methods-for-incompressible-and-compressible-flows">
+<h1>Methods for incompressible and compressible flows<a class="headerlink" href="#methods-for-incompressible-and-compressible-flows" title="Permalink to this heading">#</a></h1>
+<p text-align=justify>
+This Jupyter Book serves as a comprehensive collection of computational methods and illustrative examples for analyzing fluid flows in a variety of scenarios, including both incompressible and compressible regimes. 
+Designed for researchers, students, and professionals in fluid dynamics, this resource focuses on practical implementation and computational techniques rather than an exhaustive exploration of the theoretical foundations. 
 While the examples and methods presented here provide valuable insights into solving flow-related problems, users are encouraged to supplement their learning with theoretical texts and foundational materials for a deeper understanding of the models and underlying principles.
-This book aims to bridge the gap between theoretical knowledge and practical application, empowering readers to tackle real-world fluid dynamics challenges with confidence.</p>
+This book aims to bridge the gap between theoretical knowledge and practical application, empowering readers to tackle real-world fluid dynamics challenges with confidence.
+</p>
+<p>Most of computation examples are directly written with python. Then, for conciseness and efficiency, some more complex examples are computed with the (open-source package <code class="docutils literal notranslate"><span class="pre">aerokit</span></code>)[<a class="github reference external" href="https://github.com/jgressier/aerokit/blob/master/README.md">jgressier/aerokit</a>].</p>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Conservation laws</span></p>
 <ul>
@@ -390,7 +415,16 @@ This book aims to bridge the gap between theoretical knowledge and practical app
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supersonic flows</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="supersonic/shock-polar.html">Mass flow conservation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supersonic/shock-polar.html">Shock polar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supersonic/planar-shocks.html">Mass flow conservation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supersonic/conical-shocks.html">Conical shock waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supersonic/characteristics.html">Mach lines for 2d isentropic flows</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Internal flows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="internal/nozzle-regimes.html">Flow regimes</a></li>
 </ul>
 </div>
 </section>

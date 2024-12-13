@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Mass flow conservation &#8212; My sample book</title>
+    <title>Shock polar &#8212; My sample book</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -62,9 +63,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'supersonic/shock-polar';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mass flow conservation" href="planar-shocks.html" />
     <link rel="prev" title="Energy conservation" href="../conservation/energy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -163,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Theoretical solutions and simplified methods for incompressible and compressible flows
+                    Methods for incompressible and compressible flows
                 </a>
             </li>
         </ul>
@@ -175,7 +179,28 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supersonic flows</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mass flow conservation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shock polar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="planar-shocks.html">Mass flow conservation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="shock-reflexion.html">2D shock reflections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conical-shocks.html">Conical shock waves</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="characteristics.html">Mach lines for 2d isentropic flows</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="moc-expansion.html">Isentropic expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moc-smoothwall.html">supersonic flow over a bump</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Internal flows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../internal/nozzle-regimes.html">Flow regimes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../internal/nozzle-regime-details.html">Detailed flow regimes</a></li>
+
+
+
+
+</ul>
+</li>
 </ul>
 
     </div>
@@ -348,7 +373,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -359,11 +386,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Mass flow conservation</h1>
+    <h1>Shock polar</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rankine-hugoniot-equations">Rankine-Hugoniot equations</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -373,20 +408,45 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mass-flow-conservation">
-<h1>Mass flow conservation<a class="headerlink" href="#mass-flow-conservation" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="shock-polar">
+<h1>Shock polar<a class="headerlink" href="#shock-polar" title="Permalink to this heading">#</a></h1>
+<p>We first propose the definition of 1D jumping function depends on the upstream ordinary machine. We will check the functions implemented by the use table (the reference value of the jump of <span class="math notranslate nohighlight">\( \rho \)</span> and <span class="math notranslate nohighlight">\( P \)</span> is obtained in the table).</p>
+<section id="rankine-hugoniot-equations">
+<h2>Rankine-Hugoniot equations<a class="headerlink" href="#rankine-hugoniot-equations" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\frac{\rho_1}{\rho_0} = \left( \frac{2}{\gamma+1}\frac{1}{M_{n0}^2} + \frac{\gamma-1}{\gamma+1} \right)^{—1}
+\qquad\qquad 
+  \frac{P_1}{P_0} =  \frac{2\gamma}{\gamma+1}M_{n0}^2 - \frac{\gamma-1}{\gamma+1} \]</div>
+<div class="math notranslate nohighlight">
+\[ M_{n1} = \sqrt{\frac{1+\frac{\gamma-1}{2} M_{n0}^2}{\gamma M_{n0}^2 - \frac{\gamma-1}{2} } }\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">rho_ratio_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">))</span>
+    
+<span class="k">def</span> <span class="nf">Ps_ratio_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">2.</span><span class="o">*</span><span class="n">gam</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Mn1_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span> <span class="c1"># this function is idempotent</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">*</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now implement the calculation of the shock polar, either direct calculation (see procedure in the tables), or an iterative calculation from</p>
+<div class="math notranslate nohighlight" id="equation-eq-polar">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-polar" title="Permalink to this equation">#</a></span>\[ \frac{\tan\sigma}{\tan(\sigma-\theta)}=\frac{\rho_1}{\rho_0}(M_0,\sigma) 
+\]</div>
+<p>There are 3 solutions to the equation <a class="reference internal" href="#equation-eq-polar">(1)</a></p>
+<p>To use the Newton’s iterative method, you must define a <span class="math notranslate nohighlight">\(f(\sigma)\)</span> function which we are looking for zeros. The initialization of the iterative process can be significant and improved.</p>
+<p>The angle of the shock <span class="math notranslate nohighlight">\(\sigma \)</span> is between the upstream (<span class="math notranslate nohighlight">\( \mu_0 \)</span>) and downstream characteristics (<span class="math notranslate nohighlight">\( \Delta\theta+\mu_1 \)</span>). <span class="math notranslate nohighlight">\( \sigma = \mu_0 \)</span> is also the minimum value (zero deviation). Knowing <span class="math notranslate nohighlight">\( \mu_1 \)</span>, you can use <span class="math notranslate nohighlight">\( \Delta \theta+\mu_0 \)</span> as an initial estimate</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aerokit.aero.degree</span>     <span class="k">as</span> <span class="nn">deg</span>
 <span class="kn">import</span> <span class="nn">aerokit.aero.Isentropic</span> <span class="k">as</span> <span class="nn">Is</span>
 <span class="kn">import</span> <span class="nn">aerokit.aero.ShockWave</span>  <span class="k">as</span> <span class="nn">sw</span>
-<span class="kn">import</span> <span class="nn">numpy</span>                 <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>     <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fontsize</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="c1">#plt.rcParams.update({&#39;font.size&#39;: fontsize})</span>
 
 <span class="n">npoints</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">gam</span>     <span class="o">=</span> <span class="mf">1.4</span>
@@ -435,6 +495,7 @@ document.write(`
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -475,12 +536,35 @@ document.write(`
         <p class="prev-next-title">Energy conservation</p>
       </div>
     </a>
+    <a class="right-next"
+       href="planar-shocks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mass flow conservation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rankine-hugoniot-equations">Rankine-Hugoniot equations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

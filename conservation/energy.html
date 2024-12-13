@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -65,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'conservation/energy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mass flow conservation" href="../supersonic/shock-polar.html" />
+    <link rel="next" title="Shock polar" href="../supersonic/shock-polar.html" />
     <link rel="prev" title="Forces by momentum flux balance" href="momentum.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -164,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Theoretical solutions and simplified methods for incompressible and compressible flows
+                    Methods for incompressible and compressible flows
                 </a>
             </li>
         </ul>
@@ -176,7 +177,28 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supersonic flows</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../supersonic/shock-polar.html">Mass flow conservation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supersonic/shock-polar.html">Shock polar</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supersonic/planar-shocks.html">Mass flow conservation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/shock-reflexion.html">2D shock reflections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../supersonic/conical-shocks.html">Conical shock waves</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../supersonic/characteristics.html">Mach lines for 2d isentropic flows</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/moc-expansion.html">Isentropic expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../supersonic/moc-smoothwall.html">supersonic flow over a bump</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Internal flows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../internal/nozzle-regimes.html">Flow regimes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../internal/nozzle-regime-details.html">Detailed flow regimes</a></li>
+
+
+
+
+</ul>
+</li>
 </ul>
 
     </div>
@@ -422,7 +444,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mass flow conservation</p>
+        <p class="prev-next-title">Shock polar</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
