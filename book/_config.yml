@@ -8,7 +8,20 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
+  exclude_patterns:
+    - '*-prov.ipynb'
+
+only_build_toc_files: true
+
+# sphinx:
+#   config:
+#     html_theme: bootstrap #pydata_sphinx_theme
+
+parse:
+  myst_substitutions:
+    key: value
+# code-cell TAGS: https://jupyterbook.org/en/stable/reference/cheatsheet.html#myst-cheatsheet-code-cell-tags
 
 # Define the name of the latex output file for PDF builds
 latex:

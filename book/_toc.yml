@@ -25,11 +25,19 @@ parts:
     chapters:
     - file: supersonic/shock-polar
     - file: supersonic/planar-shocks
+      sections:
+      - file: supersonic/shock-reflexion
     - file: supersonic/conical-shocks
-  # - caption: Internal flows
-  #   chapters:
-  #   - file: config # to debug and to be removed
-  # - caption: Flow stability
+    - file: supersonic/characteristics
+      sections:
+      - file: supersonic/moc-expansion
+      - file: supersonic/moc-smoothwall
+  - caption: Internal flows
+    chapters:
+    - file: internal/nozzle-regimes
+      sections:
+      - file: internal/nozzle-regime-details
+  #- caption: Flow stability
   #   chapters:
   #   - file: config # to debug and to be removed
   # - caption: Unsteady flows
