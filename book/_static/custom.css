@@ -21,3 +21,7 @@ nav.bd-links {
         padding: .1em .65em;
     }
 }
+
+.alerted {
+    background-image: linear-gradient(to bottom, #d9edf7 0, #b9def0 100%);
+}
