@@ -398,20 +398,20 @@ document.write(`
                   
   <div class="cell tag_&quot;tags&quot;:_[&quot;remove-input&quot;] docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">aerokit.common.defaultgas</span> <span class="k">as</span> <span class="nn">defg</span>
-<span class="kn">import</span> <span class="nn">aerokit.aero.Isentropic</span> <span class="k">as</span> <span class="nn">Is</span>
-<span class="kn">import</span> <span class="nn">aerokit.aero.ShockWave</span>  <span class="k">as</span> <span class="nn">sw</span>
-<span class="kn">import</span> <span class="nn">aerokit.aero.MassFlow</span>   <span class="k">as</span> <span class="nn">mf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.common.defaultgas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">defg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.Isentropic</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Is</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.ShockWave</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="nn">sw</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.MassFlow</span><span class="w">   </span><span class="k">as</span><span class="w"> </span><span class="nn">mf</span>
 <span class="c1">#import aerokit.aero.nozzle     as nz</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
 <span class="c1">#print plt.rcParams.keys()</span>
 <span class="c1"># for slides</span>
 <span class="c1">#plt.rcParams[&#39;font.size&#39;] = 24 ; plt.rcParams[&#39;grid.linewidth&#39;] = 2 ; plt.rcParams[&#39;lines.linewidth&#39;] = 4</span>
 <span class="c1">#</span>
-<span class="k">def</span> <span class="nf">new_plot</span><span class="p">(</span><span class="n">xlab</span><span class="p">,</span> <span class="n">ylab</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">new_plot</span><span class="p">(</span><span class="n">xlab</span><span class="p">,</span> <span class="n">ylab</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlab</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylab</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>

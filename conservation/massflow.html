@@ -429,18 +429,27 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">gam</span> <span class="o">=</span> <span class="mf">1.4</span>
 
-<span class="k">def</span> <span class="nf">machplot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">machplot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mach</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">mach</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Mach&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mach</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_arrow</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xyfrom</span><span class="p">,</span> <span class="n">xyto</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">FancyArrowPatch</span>
+    <span class="n">arrow</span> <span class="o">=</span> <span class="n">FancyArrowPatch</span><span class="p">(</span><span class="n">xyfrom</span><span class="p">,</span> <span class="n">xyto</span><span class="p">,</span>
+        <span class="n">mutation_scale</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>  
+        <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">arrow</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">xyfrom</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -448,10 +457,10 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">gam</span><span class="p">)</span> <span class="o">*</span> <span class="n">mach</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">mach</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">sigma</span><span class="p">(</span><span class="n">mach</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sigma</span><span class="p">(</span><span class="n">mach</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -469,22 +478,89 @@ document.write(`
 </div>
 <section id="variation-of-section">
 <h2>Variation of section<a class="headerlink" href="#variation-of-section" title="Permalink to this heading">#</a></h2>
-<p>test substitution of key {key} value</p>
-<div class="admonition-here-s-your-admonition admonition">
-<p class="admonition-title">Here’s your admonition</p>
+<p>In a diverging duct, one can compute the new Mach number <span class="math notranslate nohighlight">\(M_2\)</span> from the measured initial Mach number <span class="math notranslate nohighlight">\(M_1\)</span> and the section ratio <span class="math notranslate nohighlight">\(A_2/A_2=1.2\)</span>. Two cases are computed below:</p>
+<ul class="simple">
+<li><p>an initial subsonic <span class="math notranslate nohighlight">\(M_1=0.4\)</span> flow where the divergence implies an acceleration (blue)</p></li>
+<li><p>an initial supersonic <span class="math notranslate nohighlight">\(M_1=1.4\)</span> flow where the divergence implies an deceleration (red)</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">This admonition was styled…</p>
+<p>With a tip class!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">section_ratio</span> <span class="o">=</span> <span class="mf">1.6</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mach_from_sigma</span><span class="p">(</span><span class="n">sigmavalue</span><span class="p">,</span> <span class="n">mach_init</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">newton</span>
+    <span class="k">return</span> <span class="n">newton</span><span class="p">(</span><span class="k">lambda</span> <span class="n">mach</span><span class="p">:</span> <span class="n">sigmavalue</span> <span class="o">-</span> <span class="n">sigma</span><span class="p">(</span><span class="n">mach</span><span class="p">),</span> <span class="c1"># function to solve</span>
+                  <span class="n">mach_init</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">mach</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">machplot</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="s2">&quot;$\dot</span><span class="si">{m_R}</span><span class="s2">(M)$&quot;</span><span class="p">,</span> <span class="n">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">))</span>
+<span class="n">machplot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="s2">&quot;$\Sigma(M)$&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="p">(</span><span class="n">mach</span><span class="p">))</span> <span class="p">;</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Mach number obtained after a ratio </span><span class="si">{</span><span class="n">section_ratio</span><span class="si">}</span><span class="s2"> of section:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">m1</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)):</span>
+    <span class="c1"># ACTUAL computation to proceed </span>
+    <span class="n">sig1</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+    <span class="n">sig2</span> <span class="o">=</span> <span class="n">section_ratio</span> <span class="o">*</span> <span class="n">sig1</span>
+    <span class="n">m2</span> <span class="o">=</span> <span class="n">mach_from_sigma</span><span class="p">(</span><span class="n">sig2</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span> <span class="c1"># initialisation with m1</span>
+    <span class="c1"># weighted mass flows functions</span>
+    <span class="n">mr1</span> <span class="o">=</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">sig1</span>
+    <span class="n">mr2</span> <span class="o">=</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">sig2</span>
+    <span class="n">plot_arrow</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">mr1</span><span class="p">),</span> <span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">mr2</span><span class="p">),</span> <span class="n">color</span><span class="p">)</span>
+    <span class="n">plot_arrow</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">sig1</span><span class="p">),</span> <span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">sig2</span><span class="p">),</span> <span class="n">color</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;is </span><span class="si">{</span><span class="n">m2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> if the initial Mach number is </span><span class="si">{</span><span class="n">m1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Mach number obtained after a ratio 1.6 of section:
+is 0.28 if the initial Mach number is 0.5 (blue)
+is 2.13 if the initial Mach number is 1.5 (red)
+</pre></div>
+</div>
+<img alt="../_images/52a417ffbb37df66ca1a2c5f8aa63da85ea8a915d73d54cddf2700ae7e2584d0.png" src="../_images/52a417ffbb37df66ca1a2c5f8aa63da85ea8a915d73d54cddf2700ae7e2584d0.png" />
+</div>
+</div>
+<div class="admonition-multiple-solutions-for-an-expected-mass-flow admonition">
+<p class="admonition-title">Multiple solutions for an expected mass flow</p>
 <p>Here’s the admonition content</p>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">This admonition was styled…</p>
-<p>With a tip class!</p>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">This admonition was styled…</p>
-<p>With a tip class!</p>
 </div>
 </section>
 <section id="multiple-solutions">
 <h2>Multiple solutions<a class="headerlink" href="#multiple-solutions" title="Permalink to this heading">#</a></h2>
+<p>From a given value of mass flow of <span class="math notranslate nohighlight">\(\Sigma\)</span> function, there are two solutions for the Mach number, one subsonic and the other supersonic. If mass flow conservation is applied to close sections, the Mach number is assumed to be in the same regime. However, a global conservation can be applied between two sections of different regimes. The selection of the regime can be made with some strategy assumptions and pressure compatibility relations. Those considerations are detailed in <a class="reference internal" href="../internal/nozzle-regime-details.html"><span class="doc">Detailed flow regimes</span></a>.</p>
+<p>Below, the computation and the identification of both solution are provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># base figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">mach</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">machplot</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="s2">&quot;$\dot</span><span class="si">{m_R}</span><span class="s2">(M)$&quot;</span><span class="p">,</span> <span class="n">mr</span><span class="p">(</span><span class="n">mach</span><span class="p">))</span>
+<span class="n">machplot</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="s2">&quot;$\Sigma(M)$&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="p">(</span><span class="n">mach</span><span class="p">))</span> <span class="p">;</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">sig1</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
+<span class="n">sig2</span> <span class="o">=</span> <span class="n">section_ratio</span> <span class="o">*</span> <span class="n">sig1</span>
+<span class="n">m2sub</span> <span class="o">=</span> <span class="n">mach_from_sigma</span><span class="p">(</span><span class="n">sig2</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span> <span class="c1"># initialisation with subsonic</span>
+<span class="n">m2sup</span> <span class="o">=</span> <span class="n">mach_from_sigma</span><span class="p">(</span><span class="n">sig2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span> <span class="c1"># initialisation with supersonic</span>
+<span class="c1"># weighted mass flows functions</span>
+<span class="n">mr1</span> <span class="o">=</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">sig1</span>
+<span class="n">mr2</span> <span class="o">=</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">sig2</span>
+<span class="k">for</span> <span class="n">m2</span> <span class="ow">in</span> <span class="p">(</span><span class="n">m2sub</span><span class="p">,</span> <span class="n">m2sup</span><span class="p">):</span> <span class="c1"># plot all arrows</span>
+    <span class="n">plot_arrow</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">mr1</span><span class="p">),</span> <span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">mr2</span><span class="p">),</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">plot_arrow</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">sig1</span><span class="p">),</span> <span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="n">sig2</span><span class="p">),</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0b994336dcd0340f3e6cb12e8bb59ae7c90d55a5805c28820d4906f7c20e2254.png" src="../_images/0b994336dcd0340f3e6cb12e8bb59ae7c90d55a5805c28820d4906f7c20e2254.png" />
+</div>
+</div>
+<p>All provided functions are implemented and available in (aerokit python package)[<a class="github reference external" href="http://github.com/jgressier/aerokit">jgressier/aerokit</a>] in <code class="docutils literal notranslate"><span class="pre">aero.massflow</span></code> subpackage.</p>
 </section>
 </section>
 

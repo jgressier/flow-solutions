@@ -414,12 +414,12 @@ document.write(`
 <h1>2D shock reflections<a class="headerlink" href="#d-shock-reflections" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">aerokit.common</span> <span class="kn">import</span> <span class="n">defaultgas</span>
-<span class="kn">from</span> <span class="nn">aerokit.aero</span> <span class="kn">import</span> <span class="n">degree</span>    <span class="k">as</span> <span class="n">deg</span> <span class="c1"># import trigo functions with degree unit support</span>
-<span class="kn">from</span> <span class="nn">aerokit.aero</span> <span class="kn">import</span> <span class="n">ShockWave</span> <span class="k">as</span> <span class="n">sw</span>  <span class="c1"># import functions for shockwave computation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aerokit.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultgas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aerokit.aero</span><span class="w"> </span><span class="kn">import</span> <span class="n">degree</span>    <span class="k">as</span> <span class="n">deg</span> <span class="c1"># import trigo functions with degree unit support</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aerokit.aero</span><span class="w"> </span><span class="kn">import</span> <span class="n">ShockWave</span> <span class="k">as</span> <span class="n">sw</span>  <span class="c1"># import functions for shockwave computation</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
@@ -436,7 +436,7 @@ document.write(`
 
 <span class="c1"># function to plot the geometry</span>
 <span class="c1">#</span>
-<span class="k">def</span> <span class="nf">plot_geom</span><span class="p">(</span><span class="n">xneg</span><span class="o">=-</span><span class="mf">.5</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">dev</span><span class="o">=</span><span class="n">wdev</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_geom</span><span class="p">(</span><span class="n">xneg</span><span class="o">=-</span><span class="mf">.5</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">dev</span><span class="o">=</span><span class="n">wdev</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="o">*</span><span class="n">zoom</span><span class="p">,</span><span class="mi">8</span><span class="o">*</span><span class="n">zoom</span><span class="p">))</span>
     <span class="n">ax</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span> 
     <span class="c1">#plt.axis([xneg, length])</span>
@@ -530,7 +530,7 @@ Compression ratio   is p2/p1= 2.54
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4e0420d9a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe6fe38da30&gt;]
 </pre></div>
 </div>
 <img alt="../_images/c1353e1feda20404464df76bf30ae18ae4d767a449ab5432dd7e0c76452fea4a.png" src="../_images/c1353e1feda20404464df76bf30ae18ae4d767a449ab5432dd7e0c76452fea4a.png" />
@@ -541,7 +541,7 @@ Compression ratio   is p2/p1= 2.54
 <h2>representation on shock polar curves<a class="headerlink" href="#representation-on-shock-polar-curves" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aerokit.aero.plot.shockpolar</span> <span class="k">as</span> <span class="nn">swplt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.plot.shockpolar</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">swplt</span>
 
 <span class="n">fig</span><span class="o">=</span><span class="n">swplt</span><span class="o">.</span><span class="n">figure_theta_pressure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Polar of Shock-Waves, $\gamma = </span><span class="si">%.1f</span><span class="s1">$&#39;</span><span class="o">%</span><span class="k">gam</span>, fontsize=12, y=0.93)
@@ -561,7 +561,7 @@ Compression ratio   is p2/p1= 2.54
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4e04167730&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe6fe2e5b20&gt;]
 </pre></div>
 </div>
 <img alt="../_images/fbb9346b6737c6c7802687821e7cc2b99ad2252266b3de5ca5a19168cf554ed8.png" src="../_images/fbb9346b6737c6c7802687821e7cc2b99ad2252266b3de5ca5a19168cf554ed8.png" />

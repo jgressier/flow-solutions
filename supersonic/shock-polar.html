@@ -421,15 +421,15 @@ document.write(`
 \[ M_{n1} = \sqrt{\frac{1+\frac{\gamma-1}{2} M_{n0}^2}{\gamma M_{n0}^2 - \frac{\gamma-1}{2} } }\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">rho_ratio_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rho_ratio_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">))</span>
     
-<span class="k">def</span> <span class="nf">Ps_ratio_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Ps_ratio_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">2.</span><span class="o">*</span><span class="n">gam</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">+</span><span class="mf">1.</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">Mn1_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span> <span class="c1"># this function is idempotent</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Mn1_from_Mn</span><span class="p">(</span><span class="n">Mn</span><span class="p">,</span> <span class="n">gam</span><span class="p">):</span> <span class="c1"># this function is idempotent</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">gam</span><span class="o">*</span><span class="n">Mn</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">gam</span><span class="o">-</span><span class="mf">1.</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -444,9 +444,9 @@ document.write(`
 <p>The angle of the shock <span class="math notranslate nohighlight">\(\sigma \)</span> is between the upstream (<span class="math notranslate nohighlight">\( \mu_0 \)</span>) and downstream characteristics (<span class="math notranslate nohighlight">\( \Delta\theta+\mu_1 \)</span>). <span class="math notranslate nohighlight">\( \sigma = \mu_0 \)</span> is also the minimum value (zero deviation). Knowing <span class="math notranslate nohighlight">\( \mu_1 \)</span>, you can use <span class="math notranslate nohighlight">\( \Delta \theta+\mu_0 \)</span> as an initial estimate</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aerokit.aero.degree</span>     <span class="k">as</span> <span class="nn">deg</span>
-<span class="kn">import</span> <span class="nn">aerokit.aero.Isentropic</span> <span class="k">as</span> <span class="nn">Is</span>
-<span class="kn">import</span> <span class="nn">aerokit.aero.ShockWave</span>  <span class="k">as</span> <span class="nn">sw</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.degree</span><span class="w">     </span><span class="k">as</span><span class="w"> </span><span class="nn">deg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.Isentropic</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Is</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.ShockWave</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="nn">sw</span>
 
 <span class="n">npoints</span> <span class="o">=</span> <span class="mi">200</span>
 <span class="n">gam</span>     <span class="o">=</span> <span class="mf">1.4</span>
