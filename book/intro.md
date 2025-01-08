@@ -7,7 +7,7 @@ While the examples and methods presented here provide valuable insights into sol
 This book aims to bridge the gap between theoretical knowledge and practical application, empowering readers to tackle real-world fluid dynamics challenges with confidence.
 </p>
 
-Most of computation examples are directly written with python. Then, for conciseness and efficiency, some more complex examples are computed with the (open-source package `aerokit`)[https://github.com/jgressier/aerokit/blob/master/README.md].
+Most of computation examples are directly written with python. Then, for conciseness and efficiency, some more complex examples are computed with the https://github.com/jgressier/aerokit/blob/master/README.md .
 
 ```{tableofcontents}
 ```

@@ -11,7 +11,9 @@ parts:
     chapters:
     - file: conservation/massflow
     - file: conservation/momentum
+    - file: conservation/fanno
     - file: conservation/energy
+    - file: conservation/rayleigh
   # - caption: Boundary layers
   #   chapters:
   #   - file: config # to debug and to be removed
