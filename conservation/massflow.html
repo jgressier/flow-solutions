@@ -175,7 +175,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Mass flow conservation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="momentum.html">Forces by momentum flux balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fanno.html">Fanno flow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy.html">Energy conservation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rayleigh.html">Rayleigh flow</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Supersonic flows</span></p>
 <ul class="nav bd-sidenav">
@@ -527,7 +529,7 @@ is 2.13 if the initial Mach number is 1.5 (red)
 </div>
 <div class="admonition-multiple-solutions-for-an-expected-mass-flow admonition">
 <p class="admonition-title">Multiple solutions for an expected mass flow</p>
-<p>If computing a continuous variation of Mach number through q varying section, the Mach number is supposed to be close to the initial one (the <code class="docutils literal notranslate"><span class="pre">mach_from_sigma</span></code> function needs an initialization). However, the above curves show that there are 2 solutions to satisfy mass flow conservation.</p>
+<p>When computing a continuous variation of Mach number through a varying section, the Mach number is supposed to be close to the initial one (the <code class="docutils literal notranslate"><span class="pre">mach_from_sigma</span></code> function needs an initialization). However, the above curves demonstrate that there are two solutions that satisfy mass flow conservation.</p>
 </div>
 </section>
 <section id="multiple-solutions">
@@ -547,7 +549,7 @@ is 2.13 if the initial Mach number is 1.5 (red)
 <span class="n">sig2</span> <span class="o">=</span> <span class="n">section_ratio</span> <span class="o">*</span> <span class="n">sig1</span>
 <span class="n">m2sub</span> <span class="o">=</span> <span class="n">mach_from_sigma</span><span class="p">(</span><span class="n">sig2</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span> <span class="c1"># initialisation with subsonic</span>
 <span class="n">m2sup</span> <span class="o">=</span> <span class="n">mach_from_sigma</span><span class="p">(</span><span class="n">sig2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span> <span class="c1"># initialisation with supersonic</span>
-<span class="c1"># weighted mass flows functions</span>
+<span class="c1"># weighted mass flow functions</span>
 <span class="n">mr1</span> <span class="o">=</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">sig1</span>
 <span class="n">mr2</span> <span class="o">=</span> <span class="n">mr</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">/</span><span class="n">sig2</span>
 <span class="k">for</span> <span class="n">m2</span> <span class="ow">in</span> <span class="p">(</span><span class="n">m2sub</span><span class="p">,</span> <span class="n">m2sup</span><span class="p">):</span> <span class="c1"># plot all arrows</span>
