@@ -621,8 +621,8 @@ Le calcul itératif consuste à calculer la vitesse du son au point <span class=
         <span class="c1"># Update u based on piston properties</span>
         <span class="n">up</span> <span class="o">=</span> <span class="n">u_piston</span><span class="p">(</span><span class="n">tpiston</span><span class="p">)</span>  <span class="c1"># calculate the flow properties at the piston at the calculated time tpiston </span>
         <span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u</span><span class="o">-</span><span class="n">up</span><span class="p">)</span>      <span class="c1"># calculate the error</span>
-        <span class="n">u</span> <span class="o">=</span> <span class="n">up</span>
-        <span class="c1">#u = 0.5*(u+up)       # under-relaxation</span>
+        <span class="c1">#u = up</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">up</span><span class="p">)</span>       <span class="c1"># under-relaxation</span>
         <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="nb">iter</span> <span class="o">&gt;</span> <span class="n">max_iter</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;u_vel did not converge at x=</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -716,252 +716,43 @@ Le calcul itératif consuste à calculer la vitesse du son au point <span class=
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 0: x0=25, t0=0.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 1: x0=35, t0=0.25
-Calculating trajectory 2: x0=100, t0=0.25
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2352/1118359543.py:63: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2355/814895536.py:63: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   trajx[nback+i+1] = sx ; trajt[nback+i+1] = st
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 1: x0=35, t0=0.25
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 2: x0=100, t0=0.25
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 3: x0=270, t0=2
-u_vel did not converge at x=[270.94297476], t=2.020
-u_vel did not converge at x=[271.73976752], t=2.040
-u_vel did not converge at x=[272.53496227], t=2.060
-u_vel did not converge at x=[273.18167306], t=2.080
-u_vel did not converge at x=[273.83164972], t=2.100
-u_vel did not converge at x=[274.57880277], t=2.120
-u_vel did not converge at x=[275.70593989], t=2.140
-u_vel did not converge at x=[277.33231567], t=2.160
-u_vel did not converge at x=[278.85028614], t=2.180
-u_vel did not converge at x=[280.54302706], t=2.200
-u_vel did not converge at x=[282.20305496], t=2.220
-u_vel did not converge at x=[283.92787094], t=2.240
-u_vel did not converge at x=[285.63724952], t=2.260
-u_vel did not converge at x=[287.35855929], t=2.280
-u_vel did not converge at x=[289.0721696], t=2.300
-u_vel did not converge at x=[284.73431098], t=2.320
-u_vel did not converge at x=[283.30203657], t=2.340
-u_vel did not converge at x=[281.7154445], t=2.360
-u_vel did not converge at x=[280.13982166], t=2.380
-u_vel did not converge at x=[278.45843986], t=2.400
-u_vel did not converge at x=[276.79091257], t=2.420
-u_vel did not converge at x=[275.07426988], t=2.440
-u_vel did not converge at x=[273.36943168], t=2.460
-u_vel did not converge at x=[271.65395303], t=2.480
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[269.94216102], t=2.500
-u_vel did not converge at x=[268.23095022], t=2.520
-u_vel did not converge at x=[266.52141167], t=2.540
-u_vel did not converge at x=[264.8203882], t=2.560
-u_vel did not converge at x=[263.12291139], t=2.580
-u_vel did not converge at x=[261.45233379], t=2.600
-u_vel did not converge at x=[259.79089545], t=2.620
-u_vel did not converge at x=[258.20816066], t=2.640
-u_vel did not converge at x=[256.66322443], t=2.660
-u_vel did not converge at x=[255.46900166], t=2.680
-u_vel did not converge at x=[254.09705215], t=2.700
+u_vel did not converge at x=[232.51164266], t=3.040
 Calculating trajectory 4: x0=280, t0=2
-u_vel did not converge at x=[281.9765562], t=2.040
-u_vel did not converge at x=[282.8931348], t=2.060
-u_vel did not converge at x=[283.66637039], t=2.080
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[284.4389784], t=2.100
-u_vel did not converge at x=[285.14314042], t=2.120
-u_vel did not converge at x=[286.21845944], t=2.140
-u_vel did not converge at x=[287.88927686], t=2.160
-u_vel did not converge at x=[289.41395918], t=2.180
-u_vel did not converge at x=[291.11919818], t=2.200
-u_vel did not converge at x=[292.78826111], t=2.220
-u_vel did not converge at x=[294.51791258], t=2.240
-u_vel did not converge at x=[296.23103316], t=2.260
-u_vel did not converge at x=[297.94812958], t=2.280
-u_vel did not converge at x=[299.65681591], t=2.300
-u_vel did not converge at x=[301.34081789], t=2.320
-u_vel did not converge at x=[303.02083747], t=2.340
-u_vel did not converge at x=[304.66328117], t=2.360
-u_vel did not converge at x=[303.29057719], t=2.380
-u_vel did not converge at x=[301.75426918], t=2.400
-u_vel did not converge at x=[300.22596565], t=2.420
-u_vel did not converge at x=[298.57086483], t=2.440
-u_vel did not converge at x=[296.92658256], t=2.460
-u_vel did not converge at x=[295.20489057], t=2.480
-u_vel did not converge at x=[293.49860962], t=2.500
-u_vel did not converge at x=[291.77507984], t=2.520
-u_vel did not converge at x=[290.06013102], t=2.540
-u_vel did not converge at x=[288.34899745], t=2.560
-u_vel did not converge at x=[286.63678594], t=2.580
-u_vel did not converge at x=[284.92340609], t=2.600
-u_vel did not converge at x=[283.20926138], t=2.620
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[281.49275045], t=2.640
-u_vel did not converge at x=[279.77748332], t=2.660
-u_vel did not converge at x=[278.06746158], t=2.680
-u_vel did not converge at x=[276.36180899], t=2.700
-u_vel did not converge at x=[274.68467041], t=2.720
-u_vel did not converge at x=[273.02020553], t=2.740
-u_vel did not converge at x=[271.46431472], t=2.760
-u_vel did not converge at x=[270.00239794], t=2.780
-u_vel did not converge at x=[268.60880441], t=2.800
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[244.63344659], t=3.080
+u_vel did not converge at x=[243.2463178], t=3.100
 Calculating C+ for plot
 Calculating C- for plot
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2352/1118359543.py:53: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2355/814895536.py:53: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   trajx[nback-i-1] = sx ; trajt[nback-i-1] = st
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2352/1118359543.py:15: RuntimeWarning: The iteration is not making good progress, as measured by the 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2355/814895536.py:15: RuntimeWarning: The iteration is not making good progress, as measured by the 
  improvement from the last ten iterations.
   tpiston = scopt.fsolve(lambda tp: x-xpiston(tp)-(t-tp)*invslope, t_guess)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[196.20505023], t=2.115
-u_vel did not converge at x=[200.94729292], t=2.100
-u_vel did not converge at x=[205.68900909], t=2.085
-u_vel did not converge at x=[210.27947456], t=2.070
-u_vel did not converge at x=[214.86995213], t=2.055
-u_vel did not converge at x=[219.30714153], t=2.040
-u_vel did not converge at x=[223.74484667], t=2.025
-u_vel did not converge at x=[228.02922286], t=2.010
-u_vel did not converge at x=[232.31462211], t=1.995
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[199.73343593], t=2.200
-u_vel did not converge at x=[204.69954254], t=2.185
-u_vel did not converge at x=[209.52767812], t=2.170
-u_vel did not converge at x=[214.3551058], t=2.155
-u_vel did not converge at x=[219.04060624], t=2.140
-u_vel did not converge at x=[223.7264257], t=2.125
-u_vel did not converge at x=[228.26765915], t=2.110
-u_vel did not converge at x=[232.80710503], t=2.095
-u_vel did not converge at x=[237.19600013], t=2.080
-u_vel did not converge at x=[241.58698392], t=2.065
-u_vel did not converge at x=[245.83205187], t=2.050
-u_vel did not converge at x=[250.07788483], t=2.035
-u_vel did not converge at x=[254.17910391], t=2.020
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[203.07668074], t=2.285
-u_vel did not converge at x=[208.11284126], t=2.270
-u_vel did not converge at x=[213.14747841], t=2.255
-u_vel did not converge at x=[218.05455488], t=2.240
-u_vel did not converge at x=[222.97876037], t=2.225
-u_vel did not converge at x=[228.0444242], t=2.210
-u_vel did not converge at x=[233.1646704], t=2.195
-u_vel did not converge at x=[238.3487036], t=2.180
-u_vel did not converge at x=[243.47980099], t=2.165
-u_vel did not converge at x=[248.49513948], t=2.150
-u_vel did not converge at x=[252.31479583], t=2.135
-u_vel did not converge at x=[256.18309067], t=2.120
-u_vel did not converge at x=[260.10833488], t=2.105
-u_vel did not converge at x=[264.35757946], t=2.090
-u_vel did not converge at x=[268.53217764], t=2.075
-u_vel did not converge at x=[272.62343259], t=2.060
-u_vel did not converge at x=[276.69021406], t=2.045
-u_vel did not converge at x=[280.62299959], t=2.030
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[211.34406929], t=2.355
-u_vel did not converge at x=[216.44185087], t=2.340
-u_vel did not converge at x=[221.53828209], t=2.325
-u_vel did not converge at x=[226.57403285], t=2.310
-u_vel did not converge at x=[231.81416291], t=2.295
-u_vel did not converge at x=[237.25147609], t=2.280
-u_vel did not converge at x=[242.62511127], t=2.265
-u_vel did not converge at x=[248.00347274], t=2.250
-u_vel did not converge at x=[253.3576617], t=2.235
-u_vel did not converge at x=[258.62601947], t=2.220
-u_vel did not converge at x=[263.87615031], t=2.205
-u_vel did not converge at x=[265.69787839], t=2.190
-u_vel did not converge at x=[269.24777442], t=2.175
-u_vel did not converge at x=[272.83131091], t=2.160
-u_vel did not converge at x=[276.4284775], t=2.145
-u_vel did not converge at x=[280.12779056], t=2.130
-u_vel did not converge at x=[283.86443264], t=2.115
-u_vel did not converge at x=[287.96415005], t=2.100
-u_vel did not converge at x=[292.00665937], t=2.085
-u_vel did not converge at x=[295.9450871], t=2.070
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating C+ for plot
 Calculating C- for plot
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[196.20505023], t=2.115
-u_vel did not converge at x=[200.94729292], t=2.100
-u_vel did not converge at x=[205.68900909], t=2.085
-u_vel did not converge at x=[210.27947456], t=2.070
-u_vel did not converge at x=[214.86995213], t=2.055
-u_vel did not converge at x=[219.30714153], t=2.040
-u_vel did not converge at x=[223.74484667], t=2.025
-u_vel did not converge at x=[228.02922286], t=2.010
-u_vel did not converge at x=[232.31462211], t=1.995
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[199.73343593], t=2.200
-u_vel did not converge at x=[204.69954254], t=2.185
-u_vel did not converge at x=[209.52767812], t=2.170
-u_vel did not converge at x=[214.3551058], t=2.155
-u_vel did not converge at x=[219.04060624], t=2.140
-u_vel did not converge at x=[223.7264257], t=2.125
-u_vel did not converge at x=[228.26765915], t=2.110
-u_vel did not converge at x=[232.80710503], t=2.095
-u_vel did not converge at x=[237.19600013], t=2.080
-u_vel did not converge at x=[241.58698392], t=2.065
-u_vel did not converge at x=[245.83205187], t=2.050
-u_vel did not converge at x=[250.07788483], t=2.035
-u_vel did not converge at x=[254.17910391], t=2.020
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[203.07668074], t=2.285
-u_vel did not converge at x=[208.11284126], t=2.270
-u_vel did not converge at x=[213.14747841], t=2.255
-u_vel did not converge at x=[218.05455488], t=2.240
-u_vel did not converge at x=[222.97876037], t=2.225
-u_vel did not converge at x=[228.0444242], t=2.210
-u_vel did not converge at x=[233.1646704], t=2.195
-u_vel did not converge at x=[238.3487036], t=2.180
-u_vel did not converge at x=[243.47980099], t=2.165
-u_vel did not converge at x=[248.49513948], t=2.150
-u_vel did not converge at x=[252.31479583], t=2.135
-u_vel did not converge at x=[256.18309067], t=2.120
-u_vel did not converge at x=[260.10833488], t=2.105
-u_vel did not converge at x=[264.35757946], t=2.090
-u_vel did not converge at x=[268.53217764], t=2.075
-u_vel did not converge at x=[272.62343259], t=2.060
-u_vel did not converge at x=[276.69021406], t=2.045
-u_vel did not converge at x=[280.62299959], t=2.030
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[211.34406929], t=2.355
-u_vel did not converge at x=[216.44185087], t=2.340
-u_vel did not converge at x=[221.53828209], t=2.325
-u_vel did not converge at x=[226.57403285], t=2.310
-u_vel did not converge at x=[231.81416291], t=2.295
-u_vel did not converge at x=[237.25147609], t=2.280
-u_vel did not converge at x=[242.62511127], t=2.265
-u_vel did not converge at x=[248.00347274], t=2.250
-u_vel did not converge at x=[253.3576617], t=2.235
-u_vel did not converge at x=[258.62601947], t=2.220
-u_vel did not converge at x=[263.87615031], t=2.205
-u_vel did not converge at x=[265.69787839], t=2.190
-u_vel did not converge at x=[269.24777442], t=2.175
-u_vel did not converge at x=[272.83131091], t=2.160
-u_vel did not converge at x=[276.4284775], t=2.145
-u_vel did not converge at x=[280.12779056], t=2.130
-u_vel did not converge at x=[283.86443264], t=2.115
-u_vel did not converge at x=[287.96415005], t=2.100
-u_vel did not converge at x=[292.00665937], t=2.085
-u_vel did not converge at x=[295.9450871], t=2.070
-</pre></div>
-</div>
-<img alt="../_images/c63fd8ce97104c207d3804b4424717e6522bfdf1d2ac420a1d35b036da953716.png" src="../_images/c63fd8ce97104c207d3804b4424717e6522bfdf1d2ac420a1d35b036da953716.png" />
-<img alt="../_images/81c095c7013aaef156054cf62ca8a9c3159d73e633031888ac54fc99aa42965f.png" src="../_images/81c095c7013aaef156054cf62ca8a9c3159d73e633031888ac54fc99aa42965f.png" />
-<img alt="../_images/4efda975a2137c38c3ac9bcfd2d5fcb650a8935947f78ba84559bfd7bf47db1a.png" src="../_images/4efda975a2137c38c3ac9bcfd2d5fcb650a8935947f78ba84559bfd7bf47db1a.png" />
+<img alt="../_images/095c1527d3e90a8b4b8e124e2b804c27fc0bfc2fc249599bf58dbb68b4e0f269.png" src="../_images/095c1527d3e90a8b4b8e124e2b804c27fc0bfc2fc249599bf58dbb68b4e0f269.png" />
+<img alt="../_images/d2ed47cafb433bf25d398391368b934d8afcfa2edce081a9bff1cf6e3304cb9f.png" src="../_images/d2ed47cafb433bf25d398391368b934d8afcfa2edce081a9bff1cf6e3304cb9f.png" />
+<img alt="../_images/fe8e040f789831ad307faa3d21c2813a6e94ba5dbe9aa04ce571d44eeb859215.png" src="../_images/fe8e040f789831ad307faa3d21c2813a6e94ba5dbe9aa04ce571d44eeb859215.png" />
 </div>
 </div>
 </section>
@@ -980,7 +771,7 @@ u_vel did not converge at x=[295.9450871], t=2.070
 <span class="c1"># function to plot the geometry</span>
 <span class="c1"># </span>
 <span class="k">def</span><span class="w"> </span><span class="nf">xpiston</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">slope</span> <span class="o">=</span> <span class="o">-</span><span class="mi">250</span>  <span class="c1"># Define the slope for the linear portion</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span>  <span class="c1"># Define the slope for the linear portion</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
         <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">0.75</span><span class="p">,</span> 
         <span class="mf">0.</span><span class="p">,</span>  <span class="c1"># Piston is stationary for t &lt; 0.75</span>
@@ -992,7 +783,7 @@ u_vel did not converge at x=[295.9450871], t=2.070
     <span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">u_piston</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">slope</span> <span class="o">=</span> <span class="o">-</span><span class="mi">250</span>  <span class="c1"># Slope of the linear portion</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="o">-</span><span class="mi">180</span>  <span class="c1"># Slope of the linear portion</span>
     
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
         <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">0.75</span><span class="p">,</span>
@@ -1015,309 +806,60 @@ u_vel did not converge at x=[295.9450871], t=2.070
 <span class="n">x0</span> <span class="o">=</span> <span class="mi">200</span> <span class="p">;</span> <span class="n">t0</span> <span class="o">=</span> <span class="mf">.25</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calculating tajectory 2: x0=</span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s2">, t0=</span><span class="si">{</span><span class="n">t0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">CTx2</span><span class="p">,</span> <span class="n">CTt2</span> <span class="o">=</span> <span class="n">integ</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="s1">&#39;vel&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">)</span>
+<span class="n">Paths</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t0</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">.25</span><span class="p">),</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mf">.25</span><span class="p">),</span> <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mf">.25</span><span class="p">)]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calculating trajectory </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: x0=</span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s2">, t0=</span><span class="si">{</span><span class="n">t0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">Paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">integ</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="s1">&#39;vel&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">))</span>
 
 <span class="n">fig</span><span class="p">(</span><span class="n">zoom</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculating C+ for plot&quot;</span><span class="p">)</span>
 <span class="n">plot_CP</span><span class="p">()</span>
-<span class="c1">#plot_CP_piston([0., 1.])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">CTx1</span><span class="p">,</span> <span class="n">CTt1</span><span class="p">,</span> <span class="o">**</span><span class="n">sty_flow</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">CTx2</span><span class="p">,</span> <span class="n">CTt2</span><span class="p">,</span> <span class="o">**</span><span class="n">sty_flow</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">Paths</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">sty_flow</span><span class="p">)</span>
 <span class="n">plot_geom</span><span class="p">()</span>
 
 <span class="n">fig</span><span class="p">(</span><span class="n">zoom</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calculating C- for plot&quot;</span><span class="p">)</span>
 <span class="n">plot_CM</span><span class="p">(</span><span class="n">length</span><span class="o">=-</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">plot_CP_piston</span><span class="p">([</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">CTx1</span><span class="p">,</span> <span class="n">CTt1</span><span class="p">,</span> <span class="o">**</span><span class="n">sty_flow</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">CTx2</span><span class="p">,</span> <span class="n">CTt2</span><span class="p">,</span> <span class="o">**</span><span class="n">sty_flow</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">Paths</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">sty_flow</span><span class="p">)</span>
 <span class="n">plot_geom</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vitesse du son: 300.00 m/s
-vitesse maximum du piston: -250.00 m/s
+vitesse maximum du piston: -180.00 m/s
 Calculating tajectory 1: x0=50, t0=0.25
-Calculating tajectory 2: x0=200, t0=0.25
-u_vel did not converge at x=[200.], t=1.430
-u_vel did not converge at x=[199.90649048], t=1.450
-u_vel did not converge at x=[199.7896369], t=1.470
-u_vel did not converge at x=[199.5345922], t=1.490
-u_vel did not converge at x=[199.27876623], t=1.510
-u_vel did not converge at x=[198.87917857], t=1.530
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2352/1118359543.py:63: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2355/814895536.py:63: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   trajx[nback+i+1] = sx ; trajt[nback+i+1] = st
-/tmp/ipykernel_2352/1118359543.py:13: RuntimeWarning: divide by zero encountered in divide
-  t_guess = t-x/invslope
-/tmp/ipykernel_2352/1118359543.py:15: RuntimeWarning: invalid value encountered in multiply
-  tpiston = scopt.fsolve(lambda tp: x-xpiston(tp)-(t-tp)*invslope, t_guess)
-/tmp/ipykernel_2352/1118359543.py:15: RuntimeWarning: The iteration is not making good progress, as measured by the 
- improvement from the last ten iterations.
-  tpiston = scopt.fsolve(lambda tp: x-xpiston(tp)-(t-tp)*invslope, t_guess)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[198.45894516], t=1.550
-u_vel did not converge at x=[197.56956964], t=1.570
-u_vel did not converge at x=[196.57565933], t=1.590
-u_vel did not converge at x=[195.31757691], t=1.610
-u_vel did not converge at x=[194.05704575], t=1.630
-u_vel did not converge at x=[192.5322525], t=1.650
-u_vel did not converge at x=[191.00509727], t=1.670
-u_vel did not converge at x=[189.21359625], t=1.690
-u_vel did not converge at x=[187.41981404], t=1.710
-u_vel did not converge at x=[185.36160799], t=1.730
-u_vel did not converge at x=[183.30119622], t=1.750
-u_vel did not converge at x=[180.97628761], t=1.770
-u_vel did not converge at x=[178.64924392], t=1.790
-u_vel did not converge at x=[176.05763499], t=1.810
-u_vel did not converge at x=[173.46395723], t=1.830
-u_vel did not converge at x=[170.60565003], t=1.850
-u_vel did not converge at x=[167.74533627], t=1.870
-u_vel did not converge at x=[164.62033265], t=1.890
-u_vel did not converge at x=[161.4933811], t=1.910
-u_vel did not converge at x=[158.10168276], t=1.930
-u_vel did not converge at x=[154.7080918], t=1.950
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating tajectory 2: x0=200, t0=0.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[151.04970031], t=1.970
-u_vel did not converge at x=[147.38946843], t=1.990
-u_vel did not converge at x=[143.46438522], t=2.010
-u_vel did not converge at x=[139.53751106], t=2.030
-u_vel did not converge at x=[135.34573745], t=2.050
-u_vel did not converge at x=[131.15221974], t=2.070
-u_vel did not converge at x=[126.69375694], t=2.090
-u_vel did not converge at x=[122.23359451], t=2.110
-u_vel did not converge at x=[117.50844365], t=2.130
-u_vel did not converge at x=[112.78163541], t=2.150
-u_vel did not converge at x=[107.78979754], t=2.170
-u_vel did not converge at x=[102.79634249], t=2.190
-u_vel did not converge at x=[97.78979754], t=2.210
-u_vel did not converge at x=[92.78979754], t=2.230
-u_vel did not converge at x=[87.78979754], t=2.250
-u_vel did not converge at x=[82.78979754], t=2.270
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 0: x0=50, t0=0.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[77.78979754], t=2.290
-u_vel did not converge at x=[72.78979754], t=2.310
-u_vel did not converge at x=[67.78979754], t=2.330
-u_vel did not converge at x=[62.78979754], t=2.350
-u_vel did not converge at x=[57.78979754], t=2.370
-u_vel did not converge at x=[52.78979754], t=2.390
-u_vel did not converge at x=[47.78979754], t=2.410
-u_vel did not converge at x=[42.78979754], t=2.430
-u_vel did not converge at x=[37.78979754], t=2.450
-u_vel did not converge at x=[32.78979754], t=2.470
-u_vel did not converge at x=[27.78979754], t=2.490
-u_vel did not converge at x=[22.78979754], t=2.510
-u_vel did not converge at x=[17.78979754], t=2.530
-u_vel did not converge at x=[12.78979754], t=2.550
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 1: x0=60, t0=0.25
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[7.78979754], t=2.570
-u_vel did not converge at x=[2.78979754], t=2.590
-Calculating C+ for plot
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 2: x0=150, t0=0.25
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating C+ for plot
 Calculating C- for plot
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2352/4037164678.py:18: RuntimeWarning: divide by zero encountered in scalar divide
-  slope = 1. / (u_piston(tp) + ap)
-/tmp/ipykernel_2352/1118359543.py:53: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2355/814895536.py:53: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   trajx[nback-i-1] = sx ; trajt[nback-i-1] = st
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[6.25], t=1.850
-u_vel did not converge at x=[13.75], t=1.835
-u_vel did not converge at x=[21.14778607], t=1.820
-u_vel did not converge at x=[28.50888602], t=1.805
-u_vel did not converge at x=[35.69253353], t=1.790
-u_vel did not converge at x=[42.87628375], t=1.775
-u_vel did not converge at x=[49.8802495], t=1.760
-u_vel did not converge at x=[56.0492423], t=1.745
-u_vel did not converge at x=[62.08939629], t=1.730
-u_vel did not converge at x=[68.12999429], t=1.715
-u_vel did not converge at x=[74.04150549], t=1.700
-u_vel did not converge at x=[79.95345895], t=1.685
-u_vel did not converge at x=[85.73608176], t=1.670
-u_vel did not converge at x=[91.51914679], t=1.655
-u_vel did not converge at x=[97.17264514], t=1.640
-u_vel did not converge at x=[102.82658559], t=1.625
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[108.35073103], t=1.610
-u_vel did not converge at x=[113.87531839], t=1.595
-u_vel did not converge at x=[119.2698899], t=1.580
-u_vel did not converge at x=[124.66490304], t=1.565
-u_vel did not converge at x=[129.92968675], t=1.550
-u_vel did not converge at x=[135.19491172], t=1.535
-u_vel did not converge at x=[140.32970066], t=1.520
-u_vel did not converge at x=[145.46493042], t=1.505
-u_vel did not converge at x=[150.46952433], t=1.490
-u_vel did not converge at x=[155.47455853], t=1.475
-u_vel did not converge at x=[160.34876361], t=1.460
-u_vel did not converge at x=[165.22340837], t=1.445
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[3.75], t=1.905
-u_vel did not converge at x=[11.25], t=1.890
-u_vel did not converge at x=[18.75], t=1.875
-u_vel did not converge at x=[26.25], t=1.860
-u_vel did not converge at x=[33.6621425], t=1.845
-u_vel did not converge at x=[40.8974798], t=1.830
-u_vel did not converge at x=[48.13292311], t=1.815
-u_vel did not converge at x=[55.18927541], t=1.800
-u_vel did not converge at x=[62.24572159], t=1.785
-u_vel did not converge at x=[69.120625], t=1.770
-u_vel did not converge at x=[75.99560785], t=1.755
-u_vel did not converge at x=[82.68640957], t=1.740
-u_vel did not converge at x=[89.37727347], t=1.725
-u_vel did not converge at x=[95.88110689], t=1.710
-u_vel did not converge at x=[102.38498178], t=1.695
-u_vel did not converge at x=[107.26384379], t=1.680
-u_vel did not converge at x=[112.89805539], t=1.665
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[118.40643407], t=1.650
-u_vel did not converge at x=[123.91525888], t=1.635
-u_vel did not converge at x=[129.29811989], t=1.620
-u_vel did not converge at x=[134.68138349], t=1.605
-u_vel did not converge at x=[139.93842944], t=1.590
-u_vel did not converge at x=[145.19586893], t=1.575
-u_vel did not converge at x=[150.32681215], t=1.560
-u_vel did not converge at x=[155.45814635], t=1.545
-u_vel did not converge at x=[160.46270188], t=1.530
-u_vel did not converge at x=[165.46764782], t=1.515
-u_vel did not converge at x=[170.34553583], t=1.500
-u_vel did not converge at x=[175.22381438], t=1.485
-u_vel did not converge at x=[179.97476157], t=1.470
-u_vel did not converge at x=[184.72609968], t=1.455
-u_vel did not converge at x=[189.34983985], t=1.440
-u_vel did not converge at x=[193.97397139], t=1.425
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[1.25], t=1.960
-u_vel did not converge at x=[8.75], t=1.945
-u_vel did not converge at x=[16.25], t=1.930
-u_vel did not converge at x=[23.75], t=1.915
-u_vel did not converge at x=[31.25], t=1.900
-u_vel did not converge at x=[38.71353563], t=1.885
-u_vel did not converge at x=[46.00090739], t=1.870
-u_vel did not converge at x=[53.28838834], t=1.855
-u_vel did not converge at x=[60.39746482], t=1.840
-u_vel did not converge at x=[67.50663895], t=1.825
-u_vel did not converge at x=[74.43500749], t=1.810
-u_vel did not converge at x=[81.36345997], t=1.795
-u_vel did not converge at x=[88.10852556], t=1.780
-u_vel did not converge at x=[94.85365871], t=1.765
-u_vel did not converge at x=[101.41262027], t=1.750
-u_vel did not converge at x=[107.97162976], t=1.735
-u_vel did not converge at x=[114.34145193], t=1.720
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[120.71129842], t=1.705
-u_vel did not converge at x=[126.88867768], t=1.690
-u_vel did not converge at x=[133.06605269], t=1.675
-u_vel did not converge at x=[139.04737624], t=1.660
-u_vel did not converge at x=[145.02866071], t=1.645
-u_vel did not converge at x=[150.80995594], t=1.630
-u_vel did not converge at x=[156.09603849], t=1.615
-u_vel did not converge at x=[161.21508811], t=1.600
-u_vel did not converge at x=[166.34788266], t=1.585
-u_vel did not converge at x=[171.34858326], t=1.570
-u_vel did not converge at x=[176.35147054], t=1.555
-u_vel did not converge at x=[181.22773536], t=1.540
-u_vel did not converge at x=[186.10493023], t=1.525
-u_vel did not converge at x=[190.85709398], t=1.510
-u_vel did not converge at x=[195.60983199], t=1.495
-u_vel did not converge at x=[200.23796237], t=1.480
-u_vel did not converge at x=[204.86653705], t=1.465
-u_vel did not converge at x=[209.37049213], t=1.450
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[6.25], t=2.000
-u_vel did not converge at x=[13.75], t=1.985
-u_vel did not converge at x=[21.25], t=1.970
-u_vel did not converge at x=[28.75], t=1.955
-u_vel did not converge at x=[36.25], t=1.940
-u_vel did not converge at x=[43.75], t=1.925
-u_vel did not converge at x=[51.1037351], t=1.910
-u_vel did not converge at x=[58.44283763], t=1.895
-u_vel did not converge at x=[65.60420558], t=1.880
-u_vel did not converge at x=[72.76567475], t=1.865
-u_vel did not converge at x=[79.74705698], t=1.850
-u_vel did not converge at x=[86.72852741], t=1.835
-u_vel did not converge at x=[93.52738442], t=1.820
-u_vel did not converge at x=[100.32631408], t=1.805
-u_vel did not converge at x=[106.93990763], t=1.790
-u_vel did not converge at x=[113.55355523], t=1.775
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[119.97892159], t=1.760
-u_vel did not converge at x=[126.40431964], t=1.745
-u_vel did not converge at x=[132.63823747], t=1.730
-u_vel did not converge at x=[138.87215996], t=1.715
-u_vel did not converge at x=[144.9111115], t=1.700
-u_vel did not converge at x=[150.95003486], t=1.685
-u_vel did not converge at x=[156.79015841], t=1.670
-u_vel did not converge at x=[162.63021355], t=1.655
-u_vel did not converge at x=[168.26724465], t=1.640
-u_vel did not converge at x=[173.90415762], t=1.625
-u_vel did not converge at x=[179.33335513], t=1.610
-u_vel did not converge at x=[184.76237245], t=1.595
-u_vel did not converge at x=[189.97842432], t=1.580
-u_vel did not converge at x=[195.19421756], t=1.565
-u_vel did not converge at x=[200.19111833], t=1.550
-u_vel did not converge at x=[205.12127983], t=1.535
-u_vel did not converge at x=[209.75812336], t=1.520
-u_vel did not converge at x=[214.43858522], t=1.505
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[218.95154473], t=1.490
-u_vel did not converge at x=[3.75], t=2.055
-u_vel did not converge at x=[11.25], t=2.040
-u_vel did not converge at x=[18.75], t=2.025
-u_vel did not converge at x=[26.25], t=2.010
-u_vel did not converge at x=[33.75], t=1.995
-u_vel did not converge at x=[41.25], t=1.980
-u_vel did not converge at x=[48.75], t=1.965
-u_vel did not converge at x=[56.20629127], t=1.950
-u_vel did not converge at x=[63.59660683], t=1.935
-u_vel did not converge at x=[70.80984168], t=1.920
-u_vel did not converge at x=[78.02318114], t=1.905
-u_vel did not converge at x=[85.05713449], t=1.890
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[92.09118006], t=1.875
-u_vel did not converge at x=[98.94336578], t=1.860
-u_vel did not converge at x=[105.79562896], t=1.845
-u_vel did not converge at x=[112.46336913], t=1.830
-u_vel did not converge at x=[119.13116911], t=1.815
-u_vel did not converge at x=[125.6115686], t=1.800
-u_vel did not converge at x=[132.0920067], t=1.785
-u_vel did not converge at x=[138.38192271], t=1.770
-u_vel did not converge at x=[144.67185179], t=1.755
-u_vel did not converge at x=[150.7678572], t=1.740
-u_vel did not converge at x=[156.86384466], t=1.725
-u_vel did not converge at x=[162.76218325], t=1.710
-u_vel did not converge at x=[168.66046599], t=1.695
-u_vel did not converge at x=[174.35699724], t=1.680
-u_vel did not converge at x=[180.05342594], t=1.665
-u_vel did not converge at x=[185.54355595], t=1.650
-u_vel did not converge at x=[191.0335253], t=1.635
-u_vel did not converge at x=[196.31211917], t=1.620
-u_vel did not converge at x=[201.5904792], t=1.605
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[206.65174773], t=1.590
-u_vel did not converge at x=[211.712689], t=1.575
-u_vel did not converge at x=[216.55003937], t=1.560
-u_vel did not converge at x=[221.38694122], t=1.545
-u_vel did not converge at x=[225.99277543], t=1.530
-</pre></div>
-</div>
-<img alt="../_images/ea243cbed94919bcbdf54f03d828b35b8ce4648ff5357115185ec35a08f96ea0.png" src="../_images/ea243cbed94919bcbdf54f03d828b35b8ce4648ff5357115185ec35a08f96ea0.png" />
-<img alt="../_images/6ae74eaa3d95a2404d21480be998315badf562f2e5398abc1fb90645e822b3ab.png" src="../_images/6ae74eaa3d95a2404d21480be998315badf562f2e5398abc1fb90645e822b3ab.png" />
+<img alt="../_images/23686130aa789a39b451c6943a9eef5c0b23919fc8755b0c4ee04f7e45b9477b.png" src="../_images/23686130aa789a39b451c6943a9eef5c0b23919fc8755b0c4ee04f7e45b9477b.png" />
+<img alt="../_images/4a488ec65cb6eaa81f052fd7919bcc57f7be3f08df478cd561bb1f79a670d383.png" src="../_images/4a488ec65cb6eaa81f052fd7919bcc57f7be3f08df478cd561bb1f79a670d383.png" />
 </div>
 </div>
 </section>
@@ -1389,27 +931,41 @@ u_vel did not converge at x=[225.99277543], t=1.530
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vitesse du son: 300.00 m/s
 vitesse maximum du piston: 150.00 m/s
 Calculating trajectory 0: x0=50, t0=0.25
-Calculating trajectory 1: x0=60, t0=0.25
-Calculating trajectory 2: x0=200, t0=0.25
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2352/1118359543.py:63: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2355/814895536.py:63: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   trajx[nback+i+1] = sx ; trajt[nback+i+1] = st
-/tmp/ipykernel_2352/1118359543.py:15: RuntimeWarning: The iteration is not making good progress, as measured by the 
+/tmp/ipykernel_2355/814895536.py:15: RuntimeWarning: The iteration is not making good progress, as measured by the 
  improvement from the last ten iterations.
   tpiston = scopt.fsolve(lambda tp: x-xpiston(tp)-(t-tp)*invslope, t_guess)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 1: x0=60, t0=0.25
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating trajectory 2: x0=200, t0=0.25
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculating C+ for plot
 Calculating C- for plot
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2352/1118359543.py:53: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2355/814895536.py:53: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   trajx[nback-i-1] = sx ; trajt[nback-i-1] = st
 </pre></div>
 </div>
-<img alt="../_images/d7788a858ea44ad51a811a659c18722ff142cecaef9004da822e3c3bd2b6f763.png" src="../_images/d7788a858ea44ad51a811a659c18722ff142cecaef9004da822e3c3bd2b6f763.png" />
-<img alt="../_images/046e4445e63630d6d3fa671c0f63553df18f30cae2ec049fb558703e1c1e2f28.png" src="../_images/046e4445e63630d6d3fa671c0f63553df18f30cae2ec049fb558703e1c1e2f28.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[294.21358598], t=1.748
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[311.4388838], t=1.802
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u_vel did not converge at x=[324.63401957], t=1.870
+u_vel did not converge at x=[328.66718205], t=1.855
+</pre></div>
+</div>
+<img alt="../_images/abc6d893a82b180d5423571f40b22aec5a8eacfecd63764845820c205422d5db.png" src="../_images/abc6d893a82b180d5423571f40b22aec5a8eacfecd63764845820c205422d5db.png" />
+<img alt="../_images/ed167a13d19405f44e8f8573fcb5b7d009b61b0c9144c9759d8cfd4b2239045d.png" src="../_images/ed167a13d19405f44e8f8573fcb5b7d009b61b0c9144c9759d8cfd4b2239045d.png" />
 </div>
 </div>
 <p><strong>credits:</strong> Solim ROVERA, J. GRESSIER</p>
