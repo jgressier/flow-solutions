@@ -62,7 +62,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'internal/nozzle-regimes';</script>
-    <link rel="icon" href="../_static/logo-bw.png"/>
+    <link rel="icon" href="../_static/logo-icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Detailed flow regimes" href="nozzle-regime-details.html" />
@@ -203,6 +203,13 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unsteady flows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsteady/simple-wave.html">Simple waves in unsteady flows</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unsteady/simple-wave-piston.html">Unsteady flow induced by a moving wall</a></li>
+</ul>
+</details></li>
+</ul>
 
     </div>
 </nav></div>
@@ -248,6 +255,55 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="http://jupyter.isae.fr/hub/user-redirect/git-pull?repo=https%3A//github.com/jgressier/flow-solutions&urlpath=tree/flow-solutions/book/internal/nozzle-regimes.ipynb&branch=master" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jgressier/flow-solutions/blob/master/book/internal/nozzle-regimes.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
 
 
 
@@ -371,7 +427,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -387,6 +445,15 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-according-to-nozzle-section-ratio">limits according to nozzle section ratio</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -396,41 +463,51 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell tag_&quot;tags&quot;:_[&quot;remove-input&quot;] docutils container">
+  <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.common.defaultgas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">defg</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.Isentropic</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Is</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.ShockWave</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="nn">sw</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.MassFlow</span><span class="w">   </span><span class="k">as</span><span class="w"> </span><span class="nn">mf</span>
-<span class="c1">#import aerokit.aero.nozzle     as nz</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="c1">#print plt.rcParams.keys()</span>
-<span class="c1"># for slides</span>
-<span class="c1">#plt.rcParams[&#39;font.size&#39;] = 24 ; plt.rcParams[&#39;grid.linewidth&#39;] = 2 ; plt.rcParams[&#39;lines.linewidth&#39;] = 4</span>
 <span class="c1">#</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">new_plot</span><span class="p">(</span><span class="n">xlab</span><span class="p">,</span> <span class="n">ylab</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlab</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylab</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plotstyle</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlab</span><span class="p">,</span> <span class="n">ylab</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;xlog&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;ylog&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlab</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylab</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_AoAc</span> <span class="o">=</span> <span class="mf">6.</span>
-<span class="n">length</span>      <span class="o">=</span> <span class="mf">8.</span>
-<span class="c1">#</span>
-</pre></div>
-</div>
-</div>
+</details>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="flow-regimes">
 <h1>Flow regimes<a class="headerlink" href="#flow-regimes" title="Link to this heading">#</a></h1>
+<p>Flow regimes are governed by different conditions and constraints. One can list:</p>
+<ul class="simple">
+<li><p>the fully subsonic flow</p></li>
+<li><p>the “fully” supersonic flow in the diffuser: convergent is subsonic and the throat is sonic and said to be <em>choked</em></p></li>
+<li></li>
+</ul>
+<p>The limits are detailed below. The description of the flow</p>
+<section id="definition">
+<h2>definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_AoAc</span> <span class="o">=</span> <span class="mf">6.</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choked NPR but subsonic</span>
@@ -443,17 +520,52 @@
 <span class="n">Msh</span>   <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">downstream_Mn</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
 <span class="n">NPRsw</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Msh</span><span class="p">)</span> <span class="o">/</span> <span class="n">sw</span><span class="o">.</span><span class="n">Pi_ratio</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NPR limits are &quot;</span><span class="p">,</span> <span class="n">NPR0</span><span class="p">,</span> <span class="n">NPRsw</span><span class="p">,</span> <span class="n">NPR1</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">with respective Mach &quot;</span><span class="p">,</span> <span class="n">Msub</span><span class="p">,</span> <span class="n">Msh</span><span class="p">,</span> <span class="n">Msup</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The limits for a nozzle with section ratio </span><span class="si">{</span><span class="n">target_AoAc</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> are:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\033</span><span class="s2">[1m  NPR&quot;</span><span class="p">,</span> <span class="s2">&quot; Mach</span><span class="se">\033</span><span class="s2">[0m&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">NPR</span><span class="p">,</span> <span class="n">Mach</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;choked and subsonic&#39;</span><span class="p">,</span> <span class="s1">&#39;shock at exit&#39;</span><span class="p">,</span> <span class="s1">&#39;supersonic&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">NPR0</span><span class="p">,</span> <span class="n">NPRsw</span><span class="p">,</span> <span class="n">NPR1</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">Msub</span><span class="p">,</span> <span class="n">Msh</span><span class="p">,</span> <span class="n">Msup</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">NPR</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Mach</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NPR limits are  1.006601275229614 4.831391753467699 63.12853673524992 
-with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The limits for a nozzle with section ratio 6.0 are:
+                     <span class=" -Color -Color-Bold">  NPR  Mach</span>
+ choked and subsonic  1.01  0.10
+       shock at exit  4.83  0.46
+          supersonic 63.13  3.37
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="limits-according-to-nozzle-section-ratio">
+<h2>limits according to nozzle section ratio<a class="headerlink" href="#limits-according-to-nozzle-section-ratio" title="Link to this heading">#</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">aerokit.instance.nozzle</span></code>, those NPR limits are already implemented. Let’s plot it against the ratio of exit over throat sections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.instance.nozzle</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nz</span>
+<span class="c1">#</span>
+<span class="n">Aratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">20.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">NPR0</span><span class="p">,</span> <span class="n">NPRsw</span><span class="p">,</span> <span class="n">NPR1</span><span class="p">,</span> <span class="n">Msub</span><span class="p">,</span> <span class="n">Msh</span><span class="p">,</span> <span class="n">Msup</span> <span class="o">=</span> <span class="n">nz</span><span class="o">.</span><span class="n">_NPR_Ms_list</span><span class="p">(</span><span class="n">Aratio</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plotstyle</span><span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="s1">&#39;Area ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;NPR&#39;</span><span class="p">,</span> <span class="s1">&#39;xlog&#39;</span><span class="p">,</span> <span class="s1">&#39;ylog&#39;</span><span class="p">)</span>
+<span class="n">plotstyle</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="s1">&#39;Area ratio&#39;</span><span class="p">,</span> <span class="s1">&#39;Mach&#39;</span><span class="p">,</span> <span class="s1">&#39;xlog&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">NPR</span><span class="p">,</span> <span class="n">Mach</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">NPR0</span><span class="p">,</span> <span class="n">NPRsw</span><span class="p">,</span> <span class="n">NPR1</span><span class="p">],</span> <span class="p">[</span><span class="n">Msub</span><span class="p">,</span> <span class="n">Msh</span><span class="p">,</span> <span class="n">Msup</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;subsonic&#39;</span><span class="p">,</span> <span class="s1">&#39;shock at exit&#39;</span><span class="p">,</span> <span class="s1">&#39;supersonic&#39;</span><span class="p">]):</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Aratio</span><span class="p">,</span> <span class="n">NPR</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Aratio</span><span class="p">,</span> <span class="n">Mach</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/65c68ed0a14645f65dd5fa1f17abc413cab696137263426f399722711cf8222c.png" src="../_images/65c68ed0a14645f65dd5fa1f17abc413cab696137263426f399722711cf8222c.png" />
+</div>
+</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -512,6 +624,23 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-according-to-nozzle-section-ratio">limits according to nozzle section ratio</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

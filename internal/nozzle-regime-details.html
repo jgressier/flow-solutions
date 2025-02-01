@@ -62,9 +62,10 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'internal/nozzle-regime-details';</script>
-    <link rel="icon" href="../_static/logo-bw.png"/>
+    <link rel="icon" href="../_static/logo-icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simple waves in unsteady flows" href="../unsteady/simple-wave.html" />
     <link rel="prev" title="Flow regimes" href="nozzle-regimes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -202,6 +203,13 @@
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unsteady flows</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../unsteady/simple-wave.html">Simple waves in unsteady flows</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unsteady/simple-wave-piston.html">Unsteady flow induced by a moving wall</a></li>
+</ul>
+</details></li>
+</ul>
 
     </div>
 </nav></div>
@@ -247,6 +255,55 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="http://jupyter.isae.fr/hub/user-redirect/git-pull?repo=https%3A//github.com/jgressier/flow-solutions&urlpath=tree/flow-solutions/book/internal/nozzle-regime-details.ipynb&branch=master" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jgressier/flow-solutions/blob/master/book/internal/nozzle-regime-details.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
 
 
 
@@ -393,10 +450,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detailed flow regimes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-limits-of-flow-regimes">Computation of limits of flow regimes</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detailed flow regimes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-flow">Isentropic subsonic flow</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-and-choked-flow">Isentropic subsonic and choked flow</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-supersonic-flow">Isentropic supersonic flow</a></li>
@@ -416,20 +470,17 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell tag_&quot;tags&quot;:_[&quot;remove-input&quot;] docutils container">
+  <div class="cell tag_'hide-input' docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.common.defaultgas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">defg</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.Isentropic</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Is</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.ShockWave</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="nn">sw</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">aerokit.aero.MassFlow</span><span class="w">   </span><span class="k">as</span><span class="w"> </span><span class="nn">mf</span>
-<span class="c1">#import aerokit.aero.nozzle     as nz</span>
+<span class="c1">#</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;lines.linewidth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="c1">#print plt.rcParams.keys()</span>
-<span class="c1"># for slides</span>
-<span class="c1">#plt.rcParams[&#39;font.size&#39;] = 24 ; plt.rcParams[&#39;grid.linewidth&#39;] = 2 ; plt.rcParams[&#39;lines.linewidth&#39;] = 4</span>
 <span class="c1">#</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">new_plot</span><span class="p">(</span><span class="n">xlab</span><span class="p">,</span> <span class="n">ylab</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
@@ -453,7 +504,6 @@
 <span class="n">ma</span>       <span class="o">=</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span><span class="n">ma_max</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">Noz_x</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mf">1.</span><span class="p">))</span>
 <span class="n">Noz_AoAc</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">Sigma_Mach</span><span class="p">(</span><span class="n">ma</span><span class="p">)</span>
 <span class="c1">#</span>
-<span class="c1">#new_plot(&#39;$x$&#39;, &#39;Mach, $r=\sqrt{A/A_c}$&#39;) ; plt.plot(Noz_x, ma, Noz_x, np.sqrt(Noz_AoAc))</span>
 <span class="n">new_plot</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">,</span> <span class="s1">&#39;$r=\sqrt{A/A_c}$&#39;</span><span class="p">)</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Noz_x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Noz_AoAc</span><span class="p">))</span>
 <span class="c1">#</span>
 <span class="n">coord_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Noz_x</span><span class="p">,</span> <span class="p">[</span><span class="n">length</span><span class="p">,</span> <span class="mf">1.05</span><span class="o">*</span><span class="n">length</span><span class="p">])</span>  <span class="c1"># define x coordinate with 2 additional points</span>
@@ -464,32 +514,6 @@
 <img alt="../_images/6d7e481f1987a545dfa70cfb9e652189d2219cc21c4a22e35f9e207c2dfb614e.png" src="../_images/6d7e481f1987a545dfa70cfb9e652189d2219cc21c4a22e35f9e207c2dfb614e.png" />
 </div>
 </div>
-<section id="computation-of-limits-of-flow-regimes">
-<h2>Computation of limits of flow regimes<a class="headerlink" href="#computation-of-limits-of-flow-regimes" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choked NPR but subsonic</span>
-<span class="n">Msub</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">MachSub_Sigma</span><span class="p">(</span><span class="n">target_AoAc</span><span class="p">)</span>
-<span class="n">NPR0</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Msub</span><span class="p">)</span>
-<span class="c1"># choked and supersonic</span>
-<span class="n">Msup</span> <span class="o">=</span> <span class="n">mf</span><span class="o">.</span><span class="n">MachSup_Sigma</span><span class="p">(</span><span class="n">target_AoAc</span><span class="p">)</span>
-<span class="n">NPR1</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
-<span class="c1"># choked, supersonic and shock at exit</span>
-<span class="n">Msh</span>   <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">downstream_Mn</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
-<span class="n">NPRsw</span> <span class="o">=</span> <span class="n">Is</span><span class="o">.</span><span class="n">PiPs_Mach</span><span class="p">(</span><span class="n">Msh</span><span class="p">)</span> <span class="o">/</span> <span class="n">sw</span><span class="o">.</span><span class="n">Pi_ratio</span><span class="p">(</span><span class="n">Msup</span><span class="p">)</span>
-<span class="c1">#</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NPR limits are &quot;</span><span class="p">,</span> <span class="n">NPR0</span><span class="p">,</span> <span class="n">NPRsw</span><span class="p">,</span> <span class="n">NPR1</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">with respective Mach &quot;</span><span class="p">,</span> <span class="n">Msub</span><span class="p">,</span> <span class="n">Msh</span><span class="p">,</span> <span class="n">Msup</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NPR limits are  1.006601275229614 4.831391753467699 63.12853673524992 
-with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="isentropic-subsonic-flow">
 <h1>Isentropic subsonic flow<a class="headerlink" href="#isentropic-subsonic-flow" title="Link to this heading">#</a></h1>
@@ -508,7 +532,7 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbee459cf10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f099e998bd0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/5009ef051236a6bd26101d7d324c67e13084c9b177c97488a89e3c477f73acfa.png" src="../_images/5009ef051236a6bd26101d7d324c67e13084c9b177c97488a89e3c477f73acfa.png" />
@@ -545,7 +569,7 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbee481dfd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f099ef59d10&gt;]
 </pre></div>
 </div>
 <img alt="../_images/5c384a0b5e4d242bc19244b496a53866fc17adbed7046323ef132eb485c6e131.png" src="../_images/5c384a0b5e4d242bc19244b496a53866fc17adbed7046323ef132eb485c6e131.png" />
@@ -582,7 +606,7 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbee44a75d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f099e8b28d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/14da11ba923f3bb242ecf485e283354e20c79675e7ef11c01e0007ed28051cad.png" src="../_images/14da11ba923f3bb242ecf485e283354e20c79675e7ef11c01e0007ed28051cad.png" />
@@ -624,7 +648,7 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbee43c1d90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f099e7bbe10&gt;]
 </pre></div>
 </div>
 <img alt="../_images/191e378ba432256b57847811d4c7db6303d5aacb5aa09ae2992ec2eb4dcc0381.png" src="../_images/191e378ba432256b57847811d4c7db6303d5aacb5aa09ae2992ec2eb4dcc0381.png" />
@@ -679,10 +703,18 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fbee42e7090&gt;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">pos</span> <span class="o">=</span> <span class="mf">.5</span>                            <span class="c1"># 0 to 1 parameter to control shock position</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">NPR</span> <span class="o">=</span> <span class="n">NPR0</span><span class="o">*</span><span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">pos</span><span class="p">)</span><span class="o">+</span><span class="n">NPRsw</span><span class="o">*</span><span class="n">pos</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># this is the same computation as previous cell but it is repeated to make it self consistent</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">_Minit</span> <span class="o">=</span> <span class="mf">.05</span> <span class="o">+</span> <span class="p">(</span><span class="n">Noz_x</span> <span class="o">&gt;</span> <span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span>   <span class="c1"># set initial guess to .05 in convergent, 2. in diffuser</span>
+
+<span class="ne">NameError</span>: name &#39;NPR0&#39; is not defined
 </pre></div>
 </div>
-<img alt="../_images/d095121b6426ae19147f712cd9be0faf0ca506b11292106a69d4e11916d4f52b.png" src="../_images/d095121b6426ae19147f712cd9be0faf0ca506b11292106a69d4e11916d4f52b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -692,12 +724,6 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.05)
-</pre></div>
-</div>
-<img alt="../_images/7c383b60923d45ab84ed359478e69c83cde742126b9c7baede8e19c042ca13ce.png" src="../_images/7c383b60923d45ab84ed359478e69c83cde742126b9c7baede8e19c042ca13ce.png" />
 </div>
 </div>
 </section>
@@ -741,6 +767,15 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
         <p class="prev-next-title">Flow regimes</p>
       </div>
     </a>
+    <a class="right-next"
+       href="../unsteady/simple-wave.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Simple waves in unsteady flows</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -758,10 +793,7 @@ with respective Mach  0.09699610094784036 0.45657039307189745 3.3678724173613803
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detailed flow regimes</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-of-limits-of-flow-regimes">Computation of limits of flow regimes</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Detailed flow regimes</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-flow">Isentropic subsonic flow</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-subsonic-and-choked-flow">Isentropic subsonic and choked flow</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isentropic-supersonic-flow">Isentropic supersonic flow</a></li>
