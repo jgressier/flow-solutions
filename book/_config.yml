@@ -44,3 +44,9 @@ html:
   favicon: "img/logo-bw.png"
   use_issues_button: true
   use_repository_button: true
+
+launch_buttons:
+  notebook_interface: classic  # The interface interactive links will activate ["classic", "jupyterlab"]
+  jupyterhub_url: "http://jupyter.isae.fr"  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
+  colab_url: "https://colab.research.google.com"
+  
