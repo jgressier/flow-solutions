@@ -39,6 +39,13 @@ parts:
     - file: internal/nozzle-regimes
       sections:
       - file: internal/nozzle-regime-details
+  - caption: Unsteady flows
+    chapters: 
+    - file: unsteady/simple-wave
+      sections:
+      - file: unsteady/simple-wave-piston
+    #- file: unsteady/unsteady-shock
+    #- file: unsteady/riemann-problem
   #- caption: Flow stability
   #   chapters:
   #   - file: config # to debug and to be removed
