@@ -39,6 +39,9 @@ parts:
     - file: internal/nozzle-regimes
       sections:
       - file: internal/nozzle-regime-details
+    - file: internal/choked-flows
+      sections:
+      - file: internal/kantrowitz-limit
   - caption: Unsteady flows
     chapters: 
     - file: unsteady/simple-wave

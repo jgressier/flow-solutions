@@ -1,4 +1,4 @@
-# flow-solutions
+# Flow solutions
 
 Theoretical solutions and simplified methods for incompressible and compressible flows
 
@@ -10,3 +10,4 @@ Theoretical solutions and simplified methods for incompressible and compressible
 ## Credits
 
 - [J. Gressier](https://github.com/jgressier)
+- contributions: S. Rovera
